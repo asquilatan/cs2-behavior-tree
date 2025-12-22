@@ -10,7 +10,6 @@
 			input = "Enemy"
 		},
 
-
 		// Parallel: Crouch while Engaging (Turret Mode)
 		{
 			type = "parallel"
@@ -24,18 +23,6 @@
 						type = "sequencer"
 						children =
 						[
-
-							// Scope in (Re-scope after shot)
-							{
-								type = "action_secondary_attack"
-							},
-							// Wait for scope / Stabilization
-							{
-								type = "action_wait"
-								wait_time_min = 0.1
-								wait_time_max = 0.1
-							},
-							// Attack
 							{
 								type = "action_pull_trigger"
 								ratio = 1.0
@@ -44,7 +31,8 @@
 								type = "action_attack"
 								input = "Enemy"
 								output = "Attacking"
-							}
+							},
+
 						]
 					}
 				}

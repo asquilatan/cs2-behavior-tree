@@ -38,11 +38,55 @@
 						}
 				},
 				{
-					type = "action_move_to"
-					destination = "Event"
-					movement_type = "BT_ACTION_MOVETO_RUN"
-					route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-					threat = "NearestThreatMemory"
+					type = "selector"
+					children =
+					[
+						// Case 1: Close range Sniper - Scope and Walk
+						{
+							type = "sequencer"
+							children =
+							[
+								{
+									type = "condition_distance_less"
+									input = "Event"
+									distance_threshold_min = 1000
+									distance_threshold_max = 1000
+									child = 
+									{
+										type = "condition_is_weapon_equipped"
+										weapon = "weapon_awp"
+									}
+								},
+								// Ensure we are scoped
+								{
+									type = "selector"
+									children =
+									[
+										{
+											type = "decorator_run_once"
+											child = { type = "action_secondary_attack" }
+										},
+										{ type = "decorator_succeed" }
+									]
+								},
+								{
+									type = "action_move_to"
+									destination = "Event"
+									movement_type = "BT_ACTION_MOVETO_RUN"
+									route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+									threat = "NearestThreatMemory"
+								}
+							]
+						},
+						// Case 2: Default Run
+						{
+							type = "action_move_to"
+							destination = "Event"
+							movement_type = "BT_ACTION_MOVETO_RUN"
+							route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+							threat = "NearestThreatMemory"
+						}
+					]
 				}
 			]
 		}
