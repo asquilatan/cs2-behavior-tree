@@ -72,7 +72,7 @@
 								{
 									type = "action_move_to"
 									destination = "Event"
-									movement_type = "BT_ACTION_MOVETO_RUN"
+									movement_type = "BT_ACTION_MOVETO_WALK"
 									route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 									threat = "NearestThreatMemory"
 								}
