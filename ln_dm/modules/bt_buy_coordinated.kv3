@@ -1,0 +1,196 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	type = "selector"
+	children =
+	[
+		// -----------------------------------------------------
+		// TERRORIST BUY LOGIC
+		// -----------------------------------------------------
+		{
+			type = "condition_is_equal"
+			source = "TeamName"
+			destination = "'T'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					// Step 1: Force buy primary weapon (20% AWP, 80% AK)
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								// AWP (20% chance)
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "decorator_maybe"
+											chance = 0.2
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_awp" ]
+											}
+										},
+										{
+											type = "condition_owns_item"
+											item = "weapon_awp"
+										}
+									]
+								},
+								// AK47 (Fallback)
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "weapon_ak47" ]
+								}
+							]
+						}
+					},
+					// Step 2: Buy Armor
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "action_custom_buy"
+							item_aliases = [ "item_assaultsuit", "item_kevlar" ]
+						}
+					},
+					// Step 3: Buy Pistol
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "decorator_maybe"
+											chance = 0.6
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_deagle" ]
+											}
+										},
+										{
+											type = "condition_owns_item"
+											item = "weapon_deagle"
+										}
+									]
+								},
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "weapon_tec9" ]
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+
+		// -----------------------------------------------------
+		// COUNTER-TERRORIST BUY LOGIC
+		// -----------------------------------------------------
+		{
+			type = "condition_is_equal"
+			source = "TeamName"
+			destination = "'CT'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					// Step 1: Force buy primary weapon (20% AWP, 80% M4)
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								// AWP (20% chance)
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "decorator_maybe"
+											chance = 0.2
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_awp" ]
+											}
+										},
+										{
+											type = "condition_owns_item"
+											item = "weapon_awp"
+										}
+									]
+								},
+								// M4 (Fallback)
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "weapon_m4a1_silencer", "weapon_m4a1" ]
+								}
+							]
+						}
+					},
+					// Step 2: Buy Armor
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "action_custom_buy"
+							item_aliases = [ "item_assaultsuit", "item_kevlar" ]
+						}
+					},
+					// Step 3: Buy Pistol
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "decorator_maybe"
+											chance = 0.6
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_deagle" ]
+											}
+										},
+										{
+											type = "condition_owns_item"
+											item = "weapon_deagle"
+										}
+									]
+								},
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "weapon_fiveseven" ]
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+}

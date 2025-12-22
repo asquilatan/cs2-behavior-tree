@@ -1,0 +1,60 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+// Sniper rifle attack module - scopes using action_secondary_attack
+{
+	type = "sequencer"
+	children =
+	[
+		// Aim at enemy
+		{
+			type = "action_aim"
+			input = "Enemy"
+		},
+
+
+		// Parallel: Crouch while Engaging (Turret Mode)
+		{
+			type = "parallel"
+			children =
+			[
+				// Continuous Fire Loop
+				{
+					type = "decorator_repeat"
+					child =
+					{
+						type = "sequencer"
+						children =
+						[
+
+							// Scope in (Re-scope after shot)
+							{
+								type = "action_secondary_attack"
+							},
+							// Wait for scope / Stabilization
+							{
+								type = "action_wait"
+								wait_time_min = 0.1
+								wait_time_max = 0.1
+							},
+							// Attack
+							{
+								type = "action_pull_trigger"
+								ratio = 1.0
+							},
+							{
+								type = "action_attack"
+								input = "Enemy"
+								output = "Attacking"
+							}
+						]
+					}
+				}
+			]
+		},
+		// Reposition (Uncrouched)
+		{
+			type = "action_combat_positioning"
+			input = "Enemy"
+			is_attacking = "Attacking"
+		}
+	]
+}
