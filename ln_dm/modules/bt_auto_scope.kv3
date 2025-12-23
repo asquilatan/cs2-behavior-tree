@@ -1,0 +1,130 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	type = "decorator_picker_reaction_time"
+	input = "ShortTermInvestigateMemory"
+	output = "Enemy"
+	child =
+	{
+		type = "condition_is_empty"
+		input = "Enemy"
+		negated = 1
+		child =
+		{
+			type = "condition_distance_less"
+			input = "Enemy"
+			distance_threshold_min = 1000
+			distance_threshold_max = 1000
+			child =
+			{
+				type = "selector"
+				children =
+				[
+					{
+						type = "condition_is_weapon_equipped"
+						weapon = "weapon_awp"
+						child =
+						{
+							type = "condition_is_equal"
+							source = "bot_is_scoped"
+							destination = 0
+							child =
+							{
+								type = "sequencer"
+								children =
+								[
+									{
+										type = "action_secondary_attack"
+									},
+									{
+										type = "decorator_random_int"
+										min = 1
+										max = 1
+										output = "bot_is_scoped"
+									}
+								]
+							}
+						}
+					},
+					{
+						type = "condition_is_weapon_equipped"
+						weapon = "weapon_ssg08"
+						child =
+						{
+							type = "condition_is_equal"
+							source = "bot_is_scoped"
+							destination = 0
+							child =
+							{
+								type = "sequencer"
+								children =
+								[
+									{
+										type = "action_secondary_attack"
+									},
+									{
+										type = "decorator_random_int"
+										min = 1
+										max = 1
+										output = "bot_is_scoped"
+									}
+								]
+							}
+						}
+					},
+					{
+						type = "condition_is_weapon_equipped"
+						weapon = "weapon_scar20"
+						child =
+						{
+							type = "condition_is_equal"
+							source = "bot_is_scoped"
+							destination = 0
+							child =
+							{
+								type = "sequencer"
+								children =
+								[
+									{
+										type = "action_secondary_attack"
+									},
+									{
+										type = "decorator_random_int"
+										min = 1
+										max = 1
+										output = "bot_is_scoped"
+									}
+								]
+							}
+						}
+					},
+					{
+						type = "condition_is_weapon_equipped"
+						weapon = "weapon_g3sg1"
+						child =
+						{
+							type = "condition_is_equal"
+							source = "bot_is_scoped"
+							destination = 0
+							child =
+							{
+								type = "sequencer"
+								children =
+								[
+									{
+										type = "action_secondary_attack"
+									},
+									{
+										type = "decorator_random_int"
+										min = 1
+										max = 1
+										output = "bot_is_scoped"
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		}
+	}
+}
