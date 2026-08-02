@@ -20,12 +20,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001
@@ -70,12 +70,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001
@@ -120,12 +120,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001
@@ -170,12 +170,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001
@@ -220,12 +220,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001
@@ -270,12 +270,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001
@@ -320,12 +320,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001
@@ -370,12 +370,12 @@
 		aim_max_duration_deviation = 0.0
 		aim_punch_angle_reaction_chance = 1.0
 
-		look_around_awareness_yaw_range = 60
-		look_around_awareness_pitch_range = 0
-		look_around_focus_interval = 9999
-		look_around_focus_interval_deviation = 0
-		look_around_lerp_time = 0.01
-		look_around_lerp_time_deviation = 0.0
+		look_around_awareness_yaw_range = 120
+		look_around_awareness_pitch_range = 25
+		look_around_focus_interval = 0.6
+		look_around_focus_interval_deviation = 0.3
+		look_around_lerp_time = 0.4
+		look_around_lerp_time_deviation = 0.2
 		look_around_lerp_bias = 0.0
 
 		reaction_time = 0.0000001

@@ -260,75 +260,22 @@
 								},
 								// Else: hunt
 								{
-									// sequencer: evaluate first to last child, in order
-									type = "sequencer"
-									children =
-									[
-										{
-											type = "action_equip_weapon"
-											weapon = "BEST"
-										},
-										{
-											type = "decorator_random_int"
-											min = 0
-											max = 1
-											output = "BombSiteIndex"
-											child =
-											{
-												type = "action_choose_bomb_site_area"
-												input = "BombSiteIndex"
-												output = "HuntAreas"
-											}
-										},
-										{
-											type = "action_choose_team_spawn_area"
-											output = "HuntAreas"
-										},
-										{
-											type = "action_choose_random_waypoint"
-											input = "HuntAreas"
-											output = "TargetHuntArea"
-										},
-										// 50/50 chance to push (run) or lurk (walk)
-										{
-											type = "decorator_random_int"
-											min = 0
-											max = 1
-											output = "LurkDecision"
-											child =
-											{
-												type = "selector"
-												children =
-												[
-													// Case 0: Lurk (Walk)
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "condition_is_equal"
-																source = "LurkDecision"
-																destination = 0
-															},
-															{
-																type = "action_move_to"
-																destination = "TargetHuntArea"
-																movement_type = "BT_ACTION_MOVETO_WALK"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															}
-														]
-													},
-													// Case 1: Push (Run)
-													{
-														type = "action_move_to"
-														destination = "TargetHuntArea"
-														movement_type = "BT_ACTION_MOVETO_RUN"
-														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-													}
-												]
-											}
-										}
-									]
+									// CTs run round tactics (site spread / bunch)
+									type = "condition_is_equal"
+									source = "TeamName"
+									destination = "'CT'"
+									child =
+									{
+										type = "subtree"
+										file = "scripts/ai/ln/modules/bt_ct_hunt.kv3"
+										name = "CtHunt"
+									}
+								},
+								// Else: hunt (T) — per-bot random site
+								{
+									type = "subtree"
+									file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+									name = "HuntRandomSite"
 								}
 							]
 						}
