@@ -49,10 +49,10 @@
 									file = "scripts/ai/modules/bt_memorize_enemies_vision.kv3"
 									name = "MemorizeEnemiesVision"
 								},
-								// memorize noises happening right now
+								// memorize noises happening right now (ln variant - react to nearby gunfire)
 								{
 									type = "subtree"
-									file = "scripts/ai/modules/bt_memorize_noises.kv3"
+									file = "scripts/ai/ln/modules/bt_memorize_hearing.kv3"
 									name = "MemorizeNoises"
 								},
 								// record the nearest memorized event to investigate
@@ -182,11 +182,11 @@
 									name = "PlantBombIfOwned"
 								},
 								// Else: investigate the closest memorized event
-								{
-									type = "subtree"
-									file = "scripts/ai/modules/bt_investigate_closest_memorized_event.kv3"
-									name = "InvestigateClosestMemorizedEvent"
-								},
+{
+								type = "subtree"
+								file = "scripts/ai/ln/modules/bt_investigate_last_known_event.kv3"
+								name = "InvestigateClosestMemorizedEvent"
+							},
 								// Else: Terrorists defend planted bomb (50% chance to stay at site)
 								{
 									type = "condition_is_equal"

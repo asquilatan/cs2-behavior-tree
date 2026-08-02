@@ -54,6 +54,32 @@
 						}
 					]
 				},
+				// Watch the last-known enemy position (memorized via sight/noise)
+				// instead of staring into the site while nothing is visible.
+				{
+					type = "decorator_ranker_dist"
+					input = "LongTermMemory"
+					child =
+					{
+						type = "decorator_picker_max_score"
+						input = "LongTermMemory"
+						child =
+						{
+							type = "condition_is_empty"
+							input = "LongTermMemory"
+							negated = 1
+							child =
+							{
+								type = "decorator_repeat"
+								child =
+								{
+									type = "action_aim"
+									input = "LongTermMemory"
+								}
+							}
+						}
+					}
+				},
 				// Fallback: hold in place (action_wait is a no-op in this engine)
 				{
 					type = "decorator_succeed"
