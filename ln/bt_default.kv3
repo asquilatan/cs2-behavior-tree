@@ -135,11 +135,9 @@
 									name = "HealIfNeeded"
 								},
 								// Else: defuse the bomb if nearby (CT).
-								// Gated on a planted bomb existing: the module's own
-								// "Search Site A / B" fallback would otherwise run
-								// forever with no bomb (sensor always finds nothing),
-								// ping-ponging CTs between the sites and never letting
-								// them reach hunt.
+								// Gated on a planted bomb existing so CTs simply carry
+								// on to hunt when there is nothing to defuse. (The
+								// module has no site-search fallback anymore.)
 								{
 									type = "decorator_sensor"
 									shape =
