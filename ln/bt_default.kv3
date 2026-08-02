@@ -134,11 +134,36 @@
 									file = "scripts/ai/modules/bt_heal_if_needed.kv3"
 									name = "HealIfNeeded"
 								},
-								// Else: defuse the bomb if nearby (CT)
+								// Else: defuse the bomb if nearby (CT).
+								// Gated on a planted bomb existing: the module's own
+								// "Search Site A / B" fallback would otherwise run
+								// forever with no bomb (sensor always finds nothing),
+								// ping-ponging CTs between the sites and never letting
+								// them reach hunt.
 								{
-									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_defuse_bomb_if_nearby.kv3"
-									name = "DefuseBombIfNearby"
+									type = "decorator_sensor"
+									shape =
+									{
+										type = "sensor_shape_sphere"
+										radius = 20000
+									}
+									entity_type_filter = "CLASSNAME"
+									orphan_only = 1
+									output = "PlantedBombNear"
+									class_name = "planted_c4"
+									priority = 0
+									child =
+									{
+										type = "condition_is_empty"
+										input = "PlantedBombNear"
+										negated = 1
+										child =
+										{
+											type = "subtree"
+											file = "scripts/ai/ln/modules/bt_defuse_bomb_if_nearby.kv3"
+											name = "DefuseBombIfNearby"
+										}
+									}
 								},
 								// Else: pickup the bomb if nearby (T)
 								{
@@ -258,19 +283,23 @@
 										}
 									}
 								},
-								// Else: hunt
+							// Else: hunt
+							{
+								// CTs run round tactics (site spread / bunch).
+								// TEMPORARY DIAGNOSTIC: CTs use the SAME per-bot random
+								// site module as the T hunt below (one-line swap to
+								// isolate action_choose_bomb_site_area from the
+								// try_lock/tier machinery).
+								type = "condition_is_equal"
+								source = "TeamName"
+								destination = "'CT'"
+								child =
 								{
-									// CTs run round tactics (site spread / bunch)
-									type = "condition_is_equal"
-									source = "TeamName"
-									destination = "'CT'"
-									child =
-									{
-										type = "subtree"
-										file = "scripts/ai/ln/modules/bt_ct_hunt.kv3"
-										name = "CtHunt"
-									}
-								},
+									type = "subtree"
+									file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+									name = "CtHuntRandomSite"
+								}
+							},
 								// Else: hunt (T) — per-bot random site
 								{
 									type = "subtree"
