@@ -43,31 +43,6 @@
 							type = "parallel"
 							children =
 							[
-								// Global Wallhack Sensor
-								{
-									type = "decorator_sensor"
-									shape =
-									{
-										type = "sensor_shape_sphere"
-										radius = 20000
-									}
-									entity_type_filter = "PLAYERS"
-									team_filter = "ENEMY"
-									output = "WallhackEnemies"
-									priority = 0
-									child =
-									{
-										type = "decorator_memory"
-										input = "WallhackEnemies"
-										output = "ShortTermInvestigateMemory"
-										child =
-										{
-											type = "decorator_memory"
-											input = "WallhackEnemies"
-											output = "LongTermMemory"
-										}
-									}
-								},
 								// memorize enemies through vision
 								{
 									type = "subtree"
@@ -186,7 +161,7 @@
 								// Else: investigate the closest memorized event
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_investigate_wallhack.kv3"
+									file = "scripts/ai/modules/bt_investigate_closest_memorized_event.kv3"
 									name = "InvestigateClosestMemorizedEvent"
 								},
 								// Else: Terrorists defend planted bomb (50% chance to stay at site)
