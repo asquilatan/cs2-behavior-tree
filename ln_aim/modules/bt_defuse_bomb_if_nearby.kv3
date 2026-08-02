@@ -8,162 +8,35 @@
 		type = "sequencer"
 		children =
 		[
-			// Step 1: Find the bomb (Global Sensor OR Search Sites)
+			// Step 1: Find the bomb (Global Sensor - sees through walls)
 			{
-				type = "selector"
-				children =
-				[
-					// Option A: Global Sensor (Fastest if works)
+				type = "decorator_sensor"
+				shape =
+				{
+					type = "sensor_shape_sphere"
+					radius = 20000
+				}
+				entity_type_filter = "CLASSNAME"
+				orphan_only = 1
+				output = "PlantedBomb"
+				class_name = "planted_c4"
+				priority = 1
+				child =
+				{
+					type = "decorator_ranker_dist"
+					input = "PlantedBomb"
+					child =
 					{
-						type = "decorator_sensor"
-						shape =
-						{
-							type = "sensor_shape_sphere"
-							radius = 20000
-						}
-						entity_type_filter = "CLASSNAME"
-						orphan_only = 1
-						output = "PlantedBomb"
-						class_name = "planted_c4"
-						priority = 1
+						type = "decorator_picker_max_score"
+						input = "PlantedBomb"
 						child =
 						{
-							type = "decorator_ranker_dist"
+							type = "condition_is_empty"
 							input = "PlantedBomb"
-							child =
-							{
-								type = "decorator_picker_max_score"
-								input = "PlantedBomb"
-								child =
-								{
-									type = "condition_is_empty"
-									input = "PlantedBomb"
-									negated = 1
-								}
-							}
+							negated = 1
 						}
-					},
-					// Option B: Search Site A
-					{
-						type = "sequencer"
-						children =
-						[
-							{
-								type = "decorator_random_int"
-								min = 0
-								max = 0
-								output = "SiteIndexA"
-								child =
-								{
-									type = "action_choose_bomb_site_area"
-									input = "SiteIndexA"
-									output = "SiteArea"
-								}
-							},
-							{
-								type = "action_choose_random_waypoint"
-								input = "SiteArea"
-								output = "SiteLocation"
-							},
-							{
-								type = "action_move_to"
-								destination = "SiteLocation"
-								movement_type = "BT_ACTION_MOVETO_RUN"
-								route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-								arrival_epsilon = 200
-							},
-							{
-								type = "decorator_sensor"
-								shape =
-								{
-									type = "sensor_shape_sphere"
-									radius = 20000
-								}
-								entity_type_filter = "CLASSNAME"
-								orphan_only = 1
-								output = "PlantedBomb"
-								class_name = "planted_c4"
-								priority = 1
-								child =
-								{
-									type = "decorator_ranker_dist"
-									input = "PlantedBomb"
-									child =
-									{
-										type = "decorator_picker_max_score"
-										input = "PlantedBomb"
-										child =
-										{
-											type = "condition_is_empty"
-											input = "PlantedBomb"
-											negated = 1
-										}
-									}
-								}
-							}
-						]
-					},
-					// Option C: Search Site B
-					{
-						type = "sequencer"
-						children =
-						[
-							{
-								type = "decorator_random_int"
-								min = 1
-								max = 1
-								output = "SiteIndexB"
-								child =
-								{
-									type = "action_choose_bomb_site_area"
-									input = "SiteIndexB"
-									output = "SiteArea"
-								}
-							},
-							{
-								type = "action_choose_random_waypoint"
-								input = "SiteArea"
-								output = "SiteLocation"
-							},
-							{
-								type = "action_move_to"
-								destination = "SiteLocation"
-								movement_type = "BT_ACTION_MOVETO_RUN"
-								route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-								arrival_epsilon = 200
-							},
-							{
-								type = "decorator_sensor"
-								shape =
-								{
-									type = "sensor_shape_sphere"
-									radius = 20000
-								}
-								entity_type_filter = "CLASSNAME"
-								orphan_only = 1
-								output = "PlantedBomb"
-								class_name = "planted_c4"
-								priority = 1
-								child =
-								{
-									type = "decorator_ranker_dist"
-									input = "PlantedBomb"
-									child =
-									{
-										type = "decorator_picker_max_score"
-										input = "PlantedBomb"
-										child =
-										{
-											type = "condition_is_empty"
-											input = "PlantedBomb"
-											negated = 1
-										}
-									}
-								}
-							}
-						]
 					}
-				]
+				}
 			},
 			// Step 2: Defuse the bomb (if found)
 			{
