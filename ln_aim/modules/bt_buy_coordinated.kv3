@@ -1,0 +1,284 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	type = "selector"
+	children =
+	[
+		// -----------------------------------------------------
+		// TERRORIST BUY LOGIC
+		// -----------------------------------------------------
+		{
+			type = "condition_is_equal"
+			source = "TeamName"
+			destination = "'T'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					// Step 1: Buy primary weapon
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								// AWP (20% chance if $4750+), otherwise buy AK
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 4750
+									child =
+									{
+										type = "selector"
+										children =
+										[
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "decorator_maybe"
+														chance = 0.2
+														child =
+														{
+															type = "action_custom_buy"
+															item_aliases = [ "weapon_awp" ]
+														}
+													},
+													{
+														type = "condition_owns_item"
+														item = "weapon_awp"
+													}
+												]
+											},
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_ak47" ]
+											}
+										]
+									}
+								},
+								// AK47 ($2700)
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 2700
+									child =
+									{
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_ak47" ]
+									}
+								},
+								// Galil ($1800)
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 1800
+									child =
+									{
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_galilar" ]
+									}
+								},
+								// Mac-10 ($1050)
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 1050
+									child =
+									{
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_mac10" ]
+									}
+								}
+							]
+						}
+					},
+					// Step 2: Buy armor
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "action_custom_buy"
+							item_aliases = [ "item_assaultsuit", "item_kevlar" ]
+						}
+					},
+					// Step 3: Buy pistol (60% Deagle, 40% Tec-9)
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "decorator_maybe"
+											chance = 0.6
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_deagle" ]
+											}
+										},
+										{
+											type = "condition_owns_item"
+											item = "weapon_deagle"
+										}
+									]
+								},
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "weapon_tec9" ]
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+
+		// -----------------------------------------------------
+		// COUNTER-TERRORIST BUY LOGIC
+		// -----------------------------------------------------
+		{
+			type = "condition_is_equal"
+			source = "TeamName"
+			destination = "'CT'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					// Step 1: Buy primary weapon
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								// AWP (20% chance if $4750+), otherwise buy M4
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 4750
+									child =
+									{
+										type = "selector"
+										children =
+										[
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "decorator_maybe"
+														chance = 0.2
+														child =
+														{
+															type = "action_custom_buy"
+															item_aliases = [ "weapon_awp" ]
+														}
+													},
+													{
+														type = "condition_owns_item"
+														item = "weapon_awp"
+													}
+												]
+											},
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_m4a1_silencer", "weapon_m4a1" ]
+											}
+										]
+									}
+								},
+								// M4 ($2900/$3100)
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 2900
+									child =
+									{
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_m4a1_silencer", "weapon_m4a1" ]
+									}
+								},
+								// Famas ($2050)
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 2050
+									child =
+									{
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_famas" ]
+									}
+								},
+								// MP9 ($1250)
+								{
+									type = "condition_is_greater_equal"
+									source = "AccountBalance"
+									destination = 1250
+									child =
+									{
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_mp9" ]
+									}
+								}
+							]
+						}
+					},
+					// Step 2: Buy armor
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "action_custom_buy"
+							item_aliases = [ "item_assaultsuit", "item_kevlar" ]
+						}
+					},
+					// Step 3: Buy pistol (60% Deagle, 40% Five-SeveN)
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "decorator_maybe"
+											chance = 0.6
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_deagle" ]
+											}
+										},
+										{
+											type = "condition_owns_item"
+											item = "weapon_deagle"
+										}
+									]
+								},
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "weapon_fiveseven" ]
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+}

@@ -151,7 +151,7 @@
 								// Else: investigate the closest memorized event
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_investigate_wallhack.kv3"
+									file = "scripts/ai/ln_aim/modules/bt_investigate_wallhack.kv3"
 									name = "InvestigateClosestMemorizedEvent"
 								},
 								// Else: hunt
