@@ -52,7 +52,7 @@ def check_balance(path: Path) -> list[str]:
 
 def main() -> None:
     repo = Path(__file__).resolve().parent
-    args = [Path(a) for a in sys.argv[1:]] or [repo]
+    args = [Path(a).resolve() for a in sys.argv[1:]] or [repo]
     targets: list[Path] = []
     for a in args:
         if a.is_dir():
@@ -66,7 +66,7 @@ def main() -> None:
 
     problems = 0
     for path in targets:
-        rel = path.relative_to(repo)
+        rel = path.relative_to(repo) if repo in path.parents else path
         text = path.read_text(encoding="utf-8-sig")
         file_errors: list[str] = []
         if KV3_HEADER not in text:
