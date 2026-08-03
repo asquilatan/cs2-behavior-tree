@@ -27,12 +27,12 @@
 				[
 					{
 						type = "subtree"
-						file = "scripts/ai/ln/modules/bt_ct_hunt_spread.kv3"
+						file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_spread.kv3"
 						name = "CtHuntSpread"
 					},
 					{
 						type = "subtree"
-						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
 						name = "CtHuntRandomSite"
 					}
 				]
@@ -50,12 +50,12 @@
 				[
 					{
 						type = "subtree"
-						file = "scripts/ai/ln/modules/bt_ct_hunt_spread.kv3"
+						file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_spread.kv3"
 						name = "CtHuntSpread"
 					},
 					{
 						type = "subtree"
-						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
 						name = "CtHuntRandomSite"
 					}
 				]
@@ -68,12 +68,12 @@
 			[
 				{
 					type = "subtree"
-					file = "scripts/ai/ln/modules/bt_ct_hunt_spread.kv3"
+					file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_spread.kv3"
 					name = "CtHuntSpread"
 				},
 				{
 					type = "subtree"
-					file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+					file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
 					name = "CtHuntRandomSite"
 				}
 			]

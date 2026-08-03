@@ -11,7 +11,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_hold.kv3"
 				name = "round2"
 			}
 		},
@@ -23,7 +23,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_hold.kv3"
 				name = "round3"
 			}
 		},
@@ -35,7 +35,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_push.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_push.kv3"
 				name = "round4"
 			}
 		},
@@ -47,7 +47,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_push.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_push.kv3"
 				name = "round5"
 			}
 		},
@@ -59,7 +59,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_hold.kv3"
 				name = "round6"
 			}
 		},
@@ -71,7 +71,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_push.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_push.kv3"
 				name = "round7"
 			}
 		},
@@ -83,7 +83,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_hold.kv3"
 				name = "round8"
 			}
 		},
@@ -95,7 +95,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_hold.kv3"
 				name = "round9"
 			}
 		},
@@ -107,7 +107,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_push.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_push.kv3"
 				name = "round10"
 			}
 		},
@@ -119,7 +119,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_hold.kv3"
 				name = "round11"
 			}
 		},
@@ -131,14 +131,14 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_push.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_push.kv3"
 				name = "round12"
 			}
 		},
 		// Rounds 13+: B site, push
 		{
 			type = "subtree"
-			file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_push.kv3"
+			file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_push.kv3"
 			name = "round13"
 		}
 	]

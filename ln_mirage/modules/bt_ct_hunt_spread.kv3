@@ -20,7 +20,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_hold.kv3"
 				name = "ct1"
 			}
 		},
@@ -30,7 +30,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_a_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_a_hold.kv3"
 				name = "ct2"
 			}
 		},
@@ -40,7 +40,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_hold.kv3"
 				name = "ct3"
 			}
 		},
@@ -50,7 +50,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_site_b_hold.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_site_b_hold.kv3"
 				name = "ct4"
 			}
 		},
@@ -60,7 +60,7 @@
 			child =
 			{
 				type = "subtree"
-				file = "scripts/ai/ln/modules/bt_ct_hunt_flank_b.kv3"
+				file = "scripts/ai/ln_mirage/modules/bt_ct_hunt_flank_b.kv3"
 				name = "ct5"
 			}
 		}

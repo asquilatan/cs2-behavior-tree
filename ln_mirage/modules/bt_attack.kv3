@@ -107,7 +107,7 @@
 										child =
 										{
 											type = "subtree"
-											file = "scripts/ai/ln/modules/bt_attack_sniper.kv3"
+											file = "scripts/ai/ln_mirage/modules/bt_attack_sniper.kv3"
 											name = "AttackSniper"
 										}
 									},

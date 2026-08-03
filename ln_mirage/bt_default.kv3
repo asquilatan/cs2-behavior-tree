@@ -1,6 +1,6 @@
 ﻿<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	config = "scripts/ai/ln/bt_config.kv3"
+	config = "scripts/ai/ln_mirage/bt_config.kv3"
 	root =
 	{
 		type = "decorator_bot_service"
@@ -52,7 +52,7 @@
 								// memorize noises happening right now (ln variant - react to nearby gunfire)
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_memorize_hearing.kv3"
+									file = "scripts/ai/ln_mirage/modules/bt_memorize_hearing.kv3"
 									name = "MemorizeNoises"
 								},
 								// record the nearest memorized event to investigate
@@ -89,7 +89,7 @@
 											},
 											{
 												type = "subtree"
-												file = "scripts/ai/ln/modules/bt_buy_coordinated.kv3"
+												file = "scripts/ai/ln_mirage/modules/bt_buy_coordinated.kv3"
 												name = "BuyCoordinated"
 											},
 											{
@@ -126,7 +126,7 @@
 								// Else: attack if we see an enemy
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_attack.kv3"
+									file = "scripts/ai/ln_mirage/modules/bt_attack.kv3"
 									name = "Attack"
 								},
 								{
@@ -158,7 +158,7 @@
 										child =
 										{
 											type = "subtree"
-											file = "scripts/ai/ln/modules/bt_defuse_bomb_if_nearby.kv3"
+											file = "scripts/ai/ln_mirage/modules/bt_defuse_bomb_if_nearby.kv3"
 											name = "DefuseBombIfNearby"
 										}
 									}
@@ -166,25 +166,25 @@
 								// Else: pickup the bomb if nearby (T)
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_pickup_bomb_if_nearby.kv3"
+									file = "scripts/ai/ln_mirage/modules/bt_pickup_bomb_if_nearby.kv3"
 									name = "PickupBombIfNearby"
 								},
 								// Else: plant bomb if we have cover from friendlies (T)
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_plant_bomb_if_covered.kv3"
+									file = "scripts/ai/ln_mirage/modules/bt_plant_bomb_if_covered.kv3"
 									name = "PlantBombIfCovered"
 								},
 								// Else: plant bomb if we own it (T)
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_plant_bomb_if_owned.kv3"
+									file = "scripts/ai/ln_mirage/modules/bt_plant_bomb_if_owned.kv3"
 									name = "PlantBombIfOwned"
 								},
 								// Else: investigate the closest memorized event
 {
 								type = "subtree"
-								file = "scripts/ai/ln/modules/bt_investigate_last_known_event.kv3"
+								file = "scripts/ai/ln_mirage/modules/bt_investigate_last_known_event.kv3"
 								name = "InvestigateClosestMemorizedEvent"
 							},
 								// Else: Terrorists defend planted bomb (50% chance to stay at site)
@@ -294,14 +294,14 @@
 								child =
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+									file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
 									name = "CtHuntRandomSite"
 								}
 							},
 								// Else: hunt (T) — per-bot random site
 								{
 									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+									file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
 									name = "HuntRandomSite"
 								}
 							]
