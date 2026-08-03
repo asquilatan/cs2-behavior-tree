@@ -1,0 +1,47 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// T-side orchestrator: default (2-1-2 spread) -> mid-round collapse ->
+	// execute (safe path + utility + commit).
+	//
+	// - Before the collapse (SitePicked empty): every bot runs the 2-1-2
+	//   default spread (2 push A, 2 push B, 1 alt-route flank), holding at
+	//   site entrances.
+	// - One bot (TCollapse lock) waits ~45-60s, picks a random site, and
+	//   sets the shared global 'SitePicked' flag.
+	// - Once SitePicked is set: everyone runs the execute (safe path into
+	//   the chosen site, flash-throw utility, commit).
+	type = "selector"
+	children =
+	[
+		// If a site has been picked, execute it.
+		{
+			type = "condition_is_empty"
+			global = 1
+			input = "SitePicked"
+			negated = 1
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_t_execute.kv3"
+				name = "TExecute"
+			}
+		},
+		// Else: default spread, and (for one bot) the collapse timer.
+		{
+			type = "parallel"
+			children =
+			[
+				{
+					type = "subtree"
+					file = "scripts/ai/ln_mirage/modules/bt_t_collapse.kv3"
+					name = "TCollapse"
+				},
+				{
+					type = "subtree"
+					file = "scripts/ai/ln_mirage/modules/bt_t_default_spread.kv3"
+					name = "TDefaultSpread"
+				}
+			]
+		}
+	]
+}

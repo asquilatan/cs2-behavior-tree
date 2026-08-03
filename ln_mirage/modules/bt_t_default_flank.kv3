@@ -1,0 +1,69 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// T default, alt-route flanker (1 of 5). Sneaks toward a site via the
+	// navmesh SAFEST route (walks, avoids exposure) instead of a hardcoded
+	// path — mirrors bt_ct_hunt_flank_b.kv3. Picks the site via the shared
+	// 'SitePicked' flag once set; before that, defaults to B (index 1) as
+	// the initial flank target. Holds at the end.
+	//
+	// TODO: this is the navmesh flank; no per-map waypoints needed. Reuses
+	// the CT flanker's WALK/SAFEST approach.
+	type = "sequencer"
+	children =
+	[
+		{
+			type = "action_equip_weapon"
+			weapon = "BEST"
+		},
+		{
+			// If a site was picked, flank toward it; else default to B.
+			type = "selector"
+			children =
+			[
+				{
+					type = "condition_is_empty"
+					input = "SitePicked"
+					negated = 1
+					child =
+					{
+						type = "decorator_random_int"
+						min = 1
+						max = 1
+						output = "FlankSiteIndex"
+						child =
+						{
+							type = "action_choose_bomb_site_area"
+							input = "FlankSiteIndex"
+							output = "FlankSiteArea"
+						}
+					}
+				},
+				{
+					type = "condition_is_empty"
+					input = "SitePicked"
+					child =
+					{
+						type = "action_choose_bomb_site_area"
+						input = "SitePicked"
+						output = "FlankSiteArea"
+					}
+				}
+			]
+		},
+		{
+			type = "action_choose_random_waypoint"
+			input = "FlankSiteArea"
+			output = "TargetArea"
+		},
+		{
+			type = "action_move_to"
+			destination = "TargetArea"
+			movement_type = "BT_ACTION_MOVETO_WALK"
+			route_type = "BT_ACTION_MOVETO_SAFEST_ROUTE"
+			arrival_epsilon = 50
+		},
+		{
+			type = "decorator_succeed"
+		}
+	]
+}

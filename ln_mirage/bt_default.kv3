@@ -298,12 +298,26 @@
 									name = "CtHuntRandomSite"
 								}
 							},
-								// Else: hunt (T) — per-bot random site
+							// Else: T-side default -> collapse -> execute
+							// (2-1-2 spread, mid-round site pick, safe-path
+							// entry with utility).
+							{
+								type = "condition_is_equal"
+								source = "TeamName"
+								destination = "'T'"
+								child =
 								{
 									type = "subtree"
-									file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
-									name = "HuntRandomSite"
+									file = "scripts/ai/ln_mirage/modules/bt_t_orchestrator.kv3"
+									name = "TOrchestrator"
 								}
+							},
+							// Else: hunt (T) — per-bot random site
+							{
+								type = "subtree"
+								file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+								name = "HuntRandomSite"
+							}
 							]
 						}
 					}

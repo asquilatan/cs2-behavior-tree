@@ -1,0 +1,69 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// Coordinated T-side site execute. One bot takes the 'TFlashThrower'
+	// lock, waits for the execute timing, then ensures it owns a flash via
+	// the BUY path (action_custom_buy — adds the flash without dropping the
+	// rifle; action_acquire_items would swap the active slot and discard the
+	// primary). The rest of the team never buys/carries flashes, so they
+	// don't pull them out mid-fight.
+	//
+	// Mirrors the CT role pattern in bt_ct_hunt_spread.kv3
+	// (decorator_try_lock on a unique domain = at most one bot at a time).
+	// Placed before the bt_hunt_random_site fallback in bt_default.kv3 so
+	// the flash goes out before the team commits.
+	//
+	// TIMING: the wait before acquiring the util keeps the bot from throwing
+	// the moment it leaves spawn. Tune wait_time_min/max (seconds).
+	type = "selector"
+	children =
+	[
+		{
+			type = "decorator_try_lock"
+			domain = "'TFlashThrower'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					{
+						// Delay the execute so the flash is not thrown instantly.
+						// Also lets the buy phase land first (buy is fire-and-forget;
+						// this wait is what makes the thrower actually own the flash
+						// by the time it needs it).
+						type = "action_wait"
+						wait_time_min = 5
+						wait_time_max = 10
+					},
+					{
+						// Ensure the thrower owns a flash BEFORE the throw attempt.
+						// Uses the buy path (action_custom_buy) — it ADDS the flash
+						// without dropping the rifle, unlike action_acquire_items
+						// which swaps the active slot and discards the primary.
+						// Gated on ownership so we don't re-buy if already owned.
+						type = "decorator_succeed"
+						child =
+						{
+							type = "condition_owns_item"
+							item = "weapon_flashbang"
+							negated = 1
+							child =
+							{
+								type = "action_custom_buy"
+								item_aliases = [ "weapon_flashbang" ]
+							}
+						}
+					},
+					{
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_flash_throw.kv3"
+						name = "FlashThrow"
+					}
+				]
+			}
+		},
+		{
+			// Not the thrower: just proceed to hunt/entry
+			type = "decorator_succeed"
+		}
+	]
+}

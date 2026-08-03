@@ -1,0 +1,119 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// T-side pop-flash into A (Mirage).
+	//
+	// Verified line: stand at 836.155396 -1036.029785 -194.101837, face
+	// -39.119064 -148.335022 0.000000, left-click throw (no jump, no
+	// right-click). Lands a pop-flash into A.
+	//
+	// Only runs if the bot actually owns a flashbang (condition_owns_item),
+	// so we never try to equip a weapon we don't have. The flash is
+	// force-given in bt_t_site_execute.kv3 via action_acquire_items, which
+	// also sidesteps any buy-timing race. If we don't have a flash we fall
+	// through to the normal hunt.
+	//
+	// After the throw the bot turns away (so the pop does not blind it),
+	// re-equips its rifle, and immediately pushes into A (site index 0, a
+	// random waypoint, run). It only marks FlashThrown after arriving, so
+	// the sequence is never re-entered while it is pushing in.
+	type = "selector"
+	children =
+	[
+		{
+			type = "condition_is_empty"
+			input = "FlashThrown"
+			child =
+			{
+				type = "condition_owns_item"
+				item = "weapon_flashbang"
+				child =
+				{
+					type = "sequencer"
+					children =
+					[
+						{
+							type = "action_move_to"
+							destination = "836.155396 -1036.029785 -194.101837"
+							movement_type = "BT_ACTION_MOVETO_RUN"
+							route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+						},
+						// Set the throw direction. Doing this BEFORE equipping the
+						// flash (and with a settle wait) prevents the look from
+						// racing/overriding the pull_trigger throw, which is what
+						// made the bot equip then re-equip without throwing.
+						{
+							type = "action_look_at"
+							input_angles = "-39.119064 -148.335022 0.000000"
+						},
+						{
+							type = "action_wait"
+							wait_time_min = 0.3
+							wait_time_max = 0.3
+						},
+						{
+							type = "action_equip_weapon"
+							weapon = "weapon_flashbang"
+						},
+						{
+							type = "action_wait"
+							wait_time_min = 0.3
+							wait_time_max = 0.3
+						},
+						{
+							type = "action_pull_trigger"
+						},
+						// Turn away so the pop flash does not blind us
+						{
+							type = "action_look_at"
+							input_angles = "89.000000 0.000000 0.000000"
+						},
+						{
+							type = "action_wait"
+							wait_time_min = 0.1
+							wait_time_max = 0.1
+						},
+						{
+							type = "action_equip_weapon"
+							weapon = "BEST"
+						},
+						// Commit into A immediately (0 = first bombsite; on
+						// dust2 that is A — verify the site order on mirage)
+						{
+							type = "decorator_random_int"
+							min = 0
+							max = 0
+							output = "BombSiteIndex"
+							child =
+							{
+								type = "action_choose_bomb_site_area"
+								input = "BombSiteIndex"
+								output = "BombSiteArea"
+							}
+						},
+						{
+							type = "action_choose_random_waypoint"
+							input = "BombSiteArea"
+							output = "TargetArea"
+						},
+						{
+							type = "action_move_to"
+							destination = "TargetArea"
+							movement_type = "BT_ACTION_MOVETO_RUN"
+							route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+						},
+						{
+							type = "action_set_global_counter"
+							input_name = "'FlashThrown'"
+							input_value = 1
+						}
+					]
+				}
+			}
+		},
+		{
+			// Already thrown this round, or we don't own a flash: fall
+			// through to the hunt (do nothing here).
+			type = "decorator_succeed"
+		}
+	]
+}

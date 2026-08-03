@@ -1,0 +1,67 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// T default 2-1-2 spread, mirroring the CT role machinery
+	// (bt_ct_hunt_spread.kv3): decorator_try_lock on unique domains, so at
+	// most one bot holds each role at a time. Deterministic 2 x A-push,
+	// 2 x B-push, 1 x alt-route flank.
+	//
+	// This is the DEFAULT state: bots advance to hardcoded site-entrance
+	// waypoints and hold there (bt_t_default_a / bt_t_default_b), or sneak
+	// via the navmesh (bt_t_default_flank). The mid-round collapse
+	// (bt_t_collapse) later overrides this and routes everyone onto the
+	// chosen site.
+	type = "selector"
+	children =
+	[
+		{
+			type = "decorator_try_lock"
+			domain = "'TA1'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_t_default_a.kv3"
+				name = "TDefaultA"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'TA2'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_t_default_a.kv3"
+				name = "TDefaultA2"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'TB1'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_t_default_b.kv3"
+				name = "TDefaultB"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'TB2'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_t_default_b.kv3"
+				name = "TDefaultB2"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'TFlank'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_t_default_flank.kv3"
+				name = "TDefaultFlank"
+			}
+		}
+	]
+}
