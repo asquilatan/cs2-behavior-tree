@@ -108,13 +108,13 @@
 													},
 													{
 														type = "action_move_to"
-														destination = "-1985.147095 496.299469 -103.511414"
+														destination = "-2190.467041 724.605591 -64.156250"
 														movement_type = "BT_ACTION_MOVETO_RUN"
 														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 													},
 													{
 														type = "action_look_at"
-														input_angles = "-14.563409 24.869152 0.000000"
+														input_angles = "-13.904027 0.536039 0.000000"
 													},
 													{
 														type = "action_wait"
@@ -156,13 +156,13 @@
 												},
 												{
 													type = "action_move_to"
-													destination = "-1985.147095 496.299469 -103.511414"
+													destination = "-2190.467041 724.605591 -64.156250"
 													movement_type = "BT_ACTION_MOVETO_RUN"
 													route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 												},
 												{
 													type = "action_look_at"
-													input_angles = "-14.563409 24.869152 0.000000"
+													input_angles = "-13.904027 0.536039 0.000000"
 												},
 												{
 													type = "action_wait"
@@ -1209,6 +1209,53 @@
 													{
 														type = "action_look_at"
 														input_angles = "-26.135603 44.317245 0.000000"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.3
+														wait_time_max = 0.3
+													},
+													{
+														type = "action_pull_trigger"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.4
+														wait_time_max = 0.4
+													},
+													{
+														type = "action_equip_weapon"
+														weapon = "BEST"
+													}
+												]
+											}
+										]
+									},
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "condition_owns_item"
+												item = "weapon_flashbang"
+											},
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "action_equip_item"
+														item = "weapon_flashbang"
+													},
+													{
+														type = "action_move_to"
+														destination = "-1003.783081 211.252075 -108.716797"
+														movement_type = "BT_ACTION_MOVETO_RUN"
+														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+													},
+													{
+														type = "action_look_at"
+														input_angles = "-41.183884 -38.404091 0.000000"
 													},
 													{
 														type = "action_wait"

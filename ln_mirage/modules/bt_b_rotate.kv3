@@ -874,13 +874,13 @@
 																	},
 																	{
 																		type = "action_move_to"
-																		destination = "-837.933228 -18.695374 -104.962036"
+																		destination = "-763.794373 -24.964905 -101.613708"
 																		movement_type = "BT_ACTION_MOVETO_RUN"
 																		route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 																	},
 																	{
 																		type = "action_look_at"
-																		input_angles = "6.468495 -69.290962 0.000000"
+																		input_angles = "0.220536 -96.879135 0.000000"
 																	},
 																	{
 																		type = "action_wait"
