@@ -104,13 +104,13 @@
 												},
 												{
 													type = "action_move_to"
-													destination = "-427.881531 -2073.430420 -116.000000"
+													destination = "-415.286743 -1940.827881 -115.775635"
 													movement_type = "BT_ACTION_MOVETO_RUN"
 													route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 												},
 												{
 													type = "action_look_at"
-													input_angles = "-4.884036 41.464314 0.000000"
+													input_angles = "-3.608005 31.688143 0.000000"
 												},
 												{
 													type = "action_wait"
@@ -2179,6 +2179,53 @@
 													{
 														type = "action_look_at"
 														input_angles = "-10.383839 83.176804 0.000000"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.3
+														wait_time_max = 0.3
+													},
+													{
+														type = "action_pull_trigger"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.4
+														wait_time_max = 0.4
+													},
+													{
+														type = "action_equip_weapon"
+														weapon = "BEST"
+													}
+												]
+											}
+										]
+									},
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "condition_owns_item"
+												item = "weapon_flashbang"
+											},
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "action_equip_item"
+														item = "weapon_flashbang"
+													},
+													{
+														type = "action_move_to"
+														destination = "-916.259705 -1527.920776 -104.000000"
+														movement_type = "BT_ACTION_MOVETO_RUN"
+														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+													},
+													{
+														type = "action_look_at"
+														input_angles = "-37.135948 37.891922 0.000000"
 													},
 													{
 														type = "action_wait"
