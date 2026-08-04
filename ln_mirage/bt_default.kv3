@@ -181,12 +181,6 @@
 									file = "scripts/ai/ln_mirage/modules/bt_plant_bomb_if_owned.kv3"
 									name = "PlantBombIfOwned"
 								},
-								// Else: investigate the closest memorized event
-{
-								type = "subtree"
-								file = "scripts/ai/ln_mirage/modules/bt_investigate_last_known_event.kv3"
-								name = "InvestigateClosestMemorizedEvent"
-							},
 								// Else: Terrorists defend planted bomb (50% chance to stay at site)
 								{
 									type = "condition_is_equal"
@@ -304,6 +298,12 @@
 									file = "scripts/ai/ln_mirage/modules/bt_t_212.kv3"
 									name = "T212"
 								}
+							},
+							// Else: investigate the closest memorized event
+							{
+								type = "subtree"
+								file = "scripts/ai/ln_mirage/modules/bt_investigate_last_known_event.kv3"
+								name = "InvestigateClosestMemorizedEvent"
 							},
 							// Fallback hunt
 							{
