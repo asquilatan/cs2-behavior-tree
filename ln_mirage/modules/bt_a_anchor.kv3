@@ -26,925 +26,1909 @@
 				]
 			}
 		},
-		// Style Lock per round: 70% Passive (condition_is_less 70), 30% Aggro
+		// Main position selector (non-interrupting move + hold)
 		{
-			type = "decorator_random_int"
-			min = 0
-			max = 99
-			output = "StyleRoll"
+			type = "decorator_repeat"
 			child =
 			{
-				type = "selector"
+				type = "sequencer"
 				children =
 				[
-					// PASSIVE STYLE (StyleRoll < 70)
 					{
-						type = "condition_is_less"
-						source = "StyleRoll"
-						destination = "70"
-						child =
-						{
-							type = "decorator_repeat"
-							child =
+						type = "action_equip_weapon"
+						weapon = "BEST"
+					},
+					{
+						type = "decorator_random_int"
+						min = 0
+						max = 69
+						output = "PosChoice"
+					},
+					{
+						type = "selector"
+						children =
+						[
 							{
-								type = "decorator_random_int"
-								min = 0
-								max = 33
-								output = "PosChoice"
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 0
 								child =
 								{
 									type = "sequencer"
 									children =
 									[
 										{
-											type = "selector"
-											children =
-											[
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 0
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-1170.804565 -2349.960938 -117.263855"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-6.247990 9.620073 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 1
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-1162.555664 -2387.078125 -113.123962"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.484010 15.340070 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 2
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-1151.295532 -2426.059570 -108.288818"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.220011 26.384068 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 3
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-1126.425415 -2470.221436 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.132011 32.104080 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 4
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-1025.132690 -2499.080322 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.264012 37.340073 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 5
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-944.119202 -2573.334473 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-5.719991 52.476013 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 6
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-1047.033325 -2553.982422 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-0.219990 54.368023 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 7
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-879.963135 -2264.118408 -108.734009"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-7.919981 6.979922 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 8
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-869.113220 -2288.722656 -108.604858"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-0.087980 30.783899 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 9
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-824.848083 -2236.494141 -114.829590"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.396019 53.619915 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 10
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-802.401062 -2225.248535 -115.980957"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.132019 82.923912 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 11
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-685.813293 -2157.694580 -116.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-9.459979 0.071950 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 12
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-668.770752 -2187.705322 -116.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-0.263978 34.963955 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 13
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-783.928284 -2153.359619 -116.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-5.455977 44.467922 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 14
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-694.602966 -2521.989014 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.176025 54.587914 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 15
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-614.053040 -2481.868652 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.264025 59.163860 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 16
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-520.212830 -2405.550537 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-3.959973 67.215767 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 17
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-401.644714 -2394.968750 -101.812500"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-3.915981 74.431625 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 18
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-381.520264 -2394.968750 -101.734375"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "2.024020 102.415581 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 19
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-337.283203 -2277.354492 -104.156250"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-13.639976 23.919563 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 20
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-279.518799 -2157.828857 -111.287109"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-19.623970 -3.316461 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 21
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-271.921021 -2204.190186 -106.922119"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.000031 58.019562 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 22
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-284.196045 -2399.869629 -100.984375"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-13.199979 50.275455 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 23
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-252.957031 -2412.929932 -100.140625"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.836018 72.451424 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 24
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-114.028503 -2387.968750 -102.593140"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.396018 87.279305 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 25
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-67.877808 -2165.905273 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.484018 86.575256 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 26
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "5.509489 -2165.941650 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.088018 96.387131 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 27
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "87.937340 -2091.404785 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.528018 120.103210 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 28
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "151.952759 -2071.932129 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.704018 136.251526 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 29
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "114.155350 -2029.588623 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "1.144019 137.923431 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 30
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "151.967682 -1914.031250 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "3.124018 179.327820 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 31
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-99.901672 -1879.615479 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.748019 46.711929 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 32
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-58.679565 -1922.080933 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "0.704018 67.743958 0.000000"
-															}
-														]
-													}
-												},
-												{
-													type = "condition_is_equal"
-													source = "PosChoice"
-													destination = 33
-													child =
-													{
-														type = "sequencer"
-														children =
-														[
-															{
-																type = "action_equip_weapon"
-																weapon = "BEST"
-															},
-															{
-																type = "action_move_to"
-																destination = "-21.545227 -1929.035034 -104.000000"
-																movement_type = "BT_ACTION_MOVETO_RUN"
-																route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-															},
-															{
-																type = "action_look_at"
-																input_angles = "-0.087981 93.748009 0.000000"
-															}
-														]
-													}
-												}
-											]
+											type = "action_move_to"
+											destination = "-1170.804565 -2349.960938 -117.263855"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-6.247990 9.620073 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 1
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1162.555664 -2387.078125 -113.123962"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.484010 15.340070 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 2
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1151.295532 -2426.059570 -108.288818"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.220011 26.384068 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 3
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1126.425415 -2470.221436 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.132011 32.104080 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 4
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1025.132690 -2499.080322 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.264012 37.340073 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 5
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-944.119202 -2573.334473 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-5.719991 52.476013 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 6
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1047.033325 -2553.982422 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.219990 54.368023 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 7
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-879.963135 -2264.118408 -108.734009"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-7.919981 6.979922 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 8
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-869.113220 -2288.722656 -108.604858"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.087980 30.783899 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 9
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-824.848083 -2236.494141 -114.829590"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.396019 53.619915 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 10
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-802.401062 -2225.248535 -115.980957"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.132019 82.923912 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 11
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-685.813293 -2157.694580 -116.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-9.459979 0.071950 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 12
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-668.770752 -2187.705322 -116.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.263978 34.963955 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 13
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-783.928284 -2153.359619 -116.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-5.455977 44.467922 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 14
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-694.602966 -2521.989014 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.176025 54.587914 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 15
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-614.053040 -2481.868652 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.264025 59.163860 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 16
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-520.212830 -2405.550537 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-3.959973 67.215767 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 17
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-401.644714 -2394.968750 -101.812500"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-3.915981 74.431625 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 18
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-381.520264 -2394.968750 -101.734375"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "2.024020 102.415581 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 19
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-337.283203 -2277.354492 -104.156250"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-13.639976 23.919563 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 20
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-279.518799 -2157.828857 -111.287109"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-19.623970 -3.316461 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 21
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-271.921021 -2204.190186 -106.922119"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.000031 58.019562 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 22
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-284.196045 -2399.869629 -100.984375"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-13.199979 50.275455 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 23
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-252.957031 -2412.929932 -100.140625"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.836018 72.451424 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 24
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-114.028503 -2387.968750 -102.593140"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.396018 87.279305 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 25
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-67.877808 -2165.905273 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.484018 86.575256 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 26
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "5.509489 -2165.941650 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.088018 96.387131 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 27
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "87.937340 -2091.404785 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.528018 120.103210 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 28
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "151.952759 -2071.932129 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.704018 136.251526 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 29
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "114.155350 -2029.588623 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "1.144019 137.923431 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 30
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "151.967682 -1914.031250 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "3.124018 179.327820 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 31
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-99.901672 -1879.615479 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.748019 46.711929 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 32
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-58.679565 -1922.080933 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.704018 67.743958 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 33
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-21.545227 -1929.035034 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.087981 93.748009 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 34
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "46.855095 -1723.938232 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "3.080025 43.148037 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 35
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "123.204567 -1717.592041 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "2.860026 60.264053 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 36
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "181.968750 -1717.959961 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "2.112027 86.487953 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 37
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "50.231853 -1418.030640 -111.498047"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "9.812028 -17.792051 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 38
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "163.984268 -1418.062622 -112.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "11.308020 -25.844061 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 39
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "279.827301 -1436.073730 -112.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "18.436018 -37.152027 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 40
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "374.333954 -1436.076294 -112.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "24.024038 -55.456024 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 41
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "460.961853 -1436.031250 -112.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "28.864033 -88.852051 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 42
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "280.061890 -1660.969360 -112.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "16.104031 21.147984 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 43
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "280.064636 -1711.945190 -64.758240"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "23.364042 29.419983 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 44
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "410.432556 -1711.925049 -159.212585"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-6.995953 47.328003 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 45
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "448.668243 -1711.940918 -178.330444"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.484046 59.427982 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 46
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "591.533875 -1718.939331 -196.705200"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.660047 72.275925 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 47
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "743.939697 -1719.245117 -186.973877"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "1.672047 88.995872 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 48
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "151.968750 -1914.037598 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.395942 -107.456001 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 49
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "124.609085 -1918.050171 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "1.275942 -98.832001 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 50
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "151.947388 -2071.968750 24.031250"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "5.235946 119.048050 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 51
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "16.189589 -2262.697754 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.835946 -2.163992 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 52
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "16.079350 -2327.984131 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.791946 13.412001 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 53
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "159.987198 -2375.929932 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "3.431946 29.735996 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 54
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "367.968750 -2374.941650 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "4.443937 31.364031 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 55
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "288.062683 -2374.960205 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.747938 16.756050 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 56
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "345.456818 -2209.089355 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.263946 -2.120023 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 57
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "288.914124 -2177.955811 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "4.355945 20.143986 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 58
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "272.045502 -2092.045166 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "4.223942 11.079994 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 59
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "272.056213 -2024.667236 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "4.487941 4.655993 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 60
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "272.034058 -1960.031250 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "4.003941 -3.660008 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 61
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "464.032379 -1944.031250 76.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "12.847940 -3.616004 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 62
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "648.035461 -1944.031250 76.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "20.063938 -4.979993 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 63
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "496.534912 -2181.150146 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "6.071933 28.635994 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 64
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "586.931091 -2254.568604 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "6.115932 43.463974 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 65
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "594.166931 -2337.946289 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "5.147929 51.603939 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 66
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "687.782898 -2343.927490 24.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "3.827928 46.059937 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 67
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "464.028534 -2368.843018 55.994873"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "6.555934 41.747990 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 68
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "562.648987 -2367.472168 55.993408"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "8.447935 51.207966 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 69
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "735.946350 -2365.688721 56.007568"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "9.327932 62.119934 0.000000"
 										},
 										{
 											type = "action_wait"
@@ -954,972 +1938,7 @@
 									]
 								}
 							}
-						}
-					},
-					// AGGRO STYLE (StyleRoll >= 70)
-					{
-						type = "decorator_repeat"
-						child =
-						{
-							type = "decorator_random_int"
-							min = 0
-							max = 35
-							output = "PosChoice"
-							child =
-							{
-								type = "sequencer"
-								children =
-								[
-									{
-										type = "selector"
-										children =
-										[
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 0
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "46.855095 -1723.938232 -104.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "3.080025 43.148037 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 1
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "123.204567 -1717.592041 -104.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "2.860026 60.264053 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 2
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "181.968750 -1717.959961 -104.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "2.112027 86.487953 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 3
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "50.231853 -1418.030640 -111.498047"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "9.812028 -17.792051 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 4
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "163.984268 -1418.062622 -112.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "11.308020 -25.844061 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 5
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "279.827301 -1436.073730 -112.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "18.436018 -37.152027 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 6
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "374.333954 -1436.076294 -112.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "24.024038 -55.456024 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 7
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "460.961853 -1436.031250 -112.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "28.864033 -88.852051 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 8
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "280.061890 -1660.969360 -112.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "16.104031 21.147984 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 9
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "280.064636 -1711.945190 -64.758240"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "23.364042 29.419983 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 10
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "410.432556 -1711.925049 -159.212585"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "-6.995953 47.328003 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 11
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "448.668243 -1711.940918 -178.330444"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "0.484046 59.427982 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 12
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "591.533875 -1718.939331 -196.705200"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "0.660047 72.275925 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 13
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "743.939697 -1719.245117 -186.973877"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "1.672047 88.995872 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 14
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "151.968750 -1914.037598 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "0.395942 -107.456001 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 15
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "124.609085 -1918.050171 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "1.275942 -98.832001 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 16
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "151.947388 -2071.968750 24.031250"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "5.235946 119.048050 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 17
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "16.189589 -2262.697754 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "0.835946 -2.163992 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 18
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "16.079350 -2327.984131 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "0.791946 13.412001 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 19
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "159.987198 -2375.929932 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "3.431946 29.735996 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 20
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "367.968750 -2374.941650 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "4.443937 31.364031 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 21
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "288.062683 -2374.960205 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "0.747938 16.756050 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 22
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "345.456818 -2209.089355 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "0.263946 -2.120023 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 23
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "288.914124 -2177.955811 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "4.355945 20.143986 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 24
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "272.045502 -2092.045166 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "4.223942 11.079994 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 25
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "272.056213 -2024.667236 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "4.487941 4.655993 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 26
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "272.034058 -1960.031250 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "4.003941 -3.660008 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 27
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "464.032379 -1944.031250 76.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "12.847940 -3.616004 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 28
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "648.035461 -1944.031250 76.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "20.063938 -4.979993 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 29
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "496.534912 -2181.150146 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "6.071933 28.635994 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 30
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "586.931091 -2254.568604 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "6.115932 43.463974 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 31
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "594.166931 -2337.946289 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "5.147929 51.603939 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 32
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "687.782898 -2343.927490 24.000000"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "3.827928 46.059937 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 33
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "464.028534 -2368.843018 55.994873"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "6.555934 41.747990 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 34
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "562.648987 -2367.472168 55.993408"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "8.447935 51.207966 0.000000"
-														}
-													]
-												}
-											},
-											{
-												type = "condition_is_equal"
-												source = "PosChoice"
-												destination = 35
-												child =
-												{
-													type = "sequencer"
-													children =
-													[
-														{
-															type = "action_equip_weapon"
-															weapon = "BEST"
-														},
-														{
-															type = "action_move_to"
-															destination = "735.946350 -2365.688721 56.007568"
-															movement_type = "BT_ACTION_MOVETO_RUN"
-															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-														},
-														{
-															type = "action_look_at"
-															input_angles = "9.327932 62.119934 0.000000"
-														}
-													]
-												}
-											}
-										]
-									},
-									{
-										type = "action_wait"
-										wait_time_min = 14.0
-										wait_time_max = 18.0
-									}
-								]
-							}
-						}
+						]
 					}
 				]
 			}

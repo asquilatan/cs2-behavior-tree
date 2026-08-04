@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate KV3 subtrees for A Anchor (Role A1), A Rotate (Role A2), and Mid Player (Role Mid) for ln_mirage exclusively."""
+"""Generate clean, non-interrupting KV3 subtrees for A Anchor, A Rotate, and Mid Player for ln_mirage."""
 import re
 from pathlib import Path
 
@@ -39,10 +39,6 @@ def build_position_step(pos_list: list[tuple[str, str]], indent: str) -> list[st
         out.append(f"{indent}\t\tchildren =")
         out.append(f"{indent}\t\t[")
         out.append(f"{indent}\t\t\t{{")
-        out.append(f"{indent}\t\t\t\ttype = \"action_equip_weapon\"")
-        out.append(f"{indent}\t\t\t\tweapon = \"BEST\"")
-        out.append(f"{indent}\t\t\t}},")
-        out.append(f"{indent}\t\t\t{{")
         out.append(f"{indent}\t\t\t\ttype = \"action_move_to\"")
         out.append(f"{indent}\t\t\t\tdestination = \"{pos}\"")
         out.append(f"{indent}\t\t\t\tmovement_type = \"BT_ACTION_MOVETO_RUN\"")
@@ -51,13 +47,18 @@ def build_position_step(pos_list: list[tuple[str, str]], indent: str) -> list[st
         out.append(f"{indent}\t\t\t{{")
         out.append(f"{indent}\t\t\t\ttype = \"action_look_at\"")
         out.append(f"{indent}\t\t\t\tinput_angles = \"{ang}\"")
+        out.append(f"{indent}\t\t\t}},")
+        out.append(f"{indent}\t\t\t{{")
+        out.append(f"{indent}\t\t\t\ttype = \"action_wait\"")
+        out.append(f"{indent}\t\t\t\twait_time_min = 14.0")
+        out.append(f"{indent}\t\t\t\twait_time_max = 18.0")
         out.append(f"{indent}\t\t\t}}")
         out.append(f"{indent}\t\t]")
         out.append(f"{indent}\t}}")
         out.append(f"{indent}}}{comma}")
     return out
 
-def build_style_locked_kv3_module(name: str, passive_list: list[tuple[str, str]], aggro_list: list[tuple[str, str]], doc_comment: str, passive_chance: int = 70) -> str:
+def build_kv3_module(name: str, pos_list: list[tuple[str, str]], doc_comment: str) -> str:
     out = [KV3_HEADER, "{", f"\t// {doc_comment}", "\ttype = \"selector\"", "\tchildren =", "\t["]
     
     # 1. High-priority noise hold branch
@@ -84,124 +85,39 @@ def build_style_locked_kv3_module(name: str, passive_list: list[tuple[str, str]]
     out.append("\t\t\t}")
     out.append("\t\t},")
 
-    if passive_list and aggro_list:
-        out.append("\t\t// Style Lock per round: 70% Passive (condition_is_less 70), 30% Aggro")
-        out.append("\t\t{")
-        out.append("\t\t\ttype = \"decorator_random_int\"")
-        out.append("\t\t\tmin = 0")
-        out.append("\t\t\tmax = 99")
-        out.append("\t\t\toutput = \"StyleRoll\"")
-        out.append("\t\t\tchild =")
-        out.append("\t\t\t{")
-        out.append("\t\t\t\ttype = \"selector\"")
-        out.append("\t\t\t\tchildren =")
-        out.append("\t\t\t\t[")
-        
-        # PASSIVE STYLE
-        out.append("\t\t\t\t\t// PASSIVE STYLE (StyleRoll < 70)")
-        out.append("\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\ttype = \"condition_is_less\"")
-        out.append("\t\t\t\t\t\tsource = \"StyleRoll\"")
-        out.append(f"\t\t\t\t\t\tdestination = \"{passive_chance}\"")
-        out.append("\t\t\t\t\t\tchild =")
-        out.append("\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\ttype = \"decorator_repeat\"")
-        out.append("\t\t\t\t\t\t\tchild =")
-        out.append("\t\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\t\ttype = \"decorator_random_int\"")
-        out.append("\t\t\t\t\t\t\t\tmin = 0")
-        out.append(f"\t\t\t\t\t\t\t\tmax = {len(passive_list) - 1}")
-        out.append("\t\t\t\t\t\t\t\toutput = \"PosChoice\"")
-        out.append("\t\t\t\t\t\t\t\tchild =")
-        out.append("\t\t\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\t\t\ttype = \"sequencer\"")
-        out.append("\t\t\t\t\t\t\t\t\tchildren =")
-        out.append("\t\t\t\t\t\t\t\t\t[")
-        out.append("\t\t\t\t\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\t\t\t\t\ttype = \"selector\"")
-        out.append("\t\t\t\t\t\t\t\t\t\t\tchildren =")
-        out.append("\t\t\t\t\t\t\t\t\t\t\t[")
-        out.extend(build_position_step(passive_list, "\t\t\t\t\t\t\t\t\t\t\t\t"))
-        out.append("\t\t\t\t\t\t\t\t\t\t\t]")
-        out.append("\t\t\t\t\t\t\t\t\t\t},")
-        out.append("\t\t\t\t\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\t\t\t\t\ttype = \"action_wait\"")
-        out.append("\t\t\t\t\t\t\t\t\t\t\twait_time_min = 14.0")
-        out.append("\t\t\t\t\t\t\t\t\t\t\twait_time_max = 18.0")
-        out.append("\t\t\t\t\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t\t\t\t\t]")
-        out.append("\t\t\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t},")
-
-        # AGGRO STYLE
-        out.append("\t\t\t\t\t// AGGRO STYLE (StyleRoll >= 70)")
-        out.append("\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\ttype = \"decorator_repeat\"")
-        out.append("\t\t\t\t\t\tchild =")
-        out.append("\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\ttype = \"decorator_random_int\"")
-        out.append("\t\t\t\t\t\t\tmin = 0")
-        out.append(f"\t\t\t\t\t\t\tmax = {len(aggro_list) - 1}")
-        out.append("\t\t\t\t\t\t\toutput = \"PosChoice\"")
-        out.append("\t\t\t\t\t\t\tchild =")
-        out.append("\t\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\t\ttype = \"sequencer\"")
-        out.append("\t\t\t\t\t\t\t\tchildren =")
-        out.append("\t\t\t\t\t\t\t\t[")
-        out.append("\t\t\t\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\t\t\t\ttype = \"selector\"")
-        out.append("\t\t\t\t\t\t\t\t\t\tchildren =")
-        out.append("\t\t\t\t\t\t\t\t\t\t[")
-        out.extend(build_position_step(aggro_list, "\t\t\t\t\t\t\t\t\t\t\t"))
-        out.append("\t\t\t\t\t\t\t\t\t\t]")
-        out.append("\t\t\t\t\t\t\t\t\t},")
-        out.append("\t\t\t\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\t\t\t\ttype = \"action_wait\"")
-        out.append("\t\t\t\t\t\t\t\t\t\twait_time_min = 14.0")
-        out.append("\t\t\t\t\t\t\t\t\t\twait_time_max = 18.0")
-        out.append("\t\t\t\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t\t\t\t]")
-        out.append("\t\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t}")
-        out.append("\t\t\t\t]")
-        out.append("\t\t\t}")
-        out.append("\t\t}")
-    else:
-        # Single pool
-        pos_list = passive_list or aggro_list
-        out.append("\t\t// Single pool position cycling")
-        out.append("\t\t{")
-        out.append("\t\t\ttype = \"decorator_repeat\"")
-        out.append("\t\t\tchild =")
-        out.append("\t\t\t{")
-        out.append("\t\t\t\ttype = \"decorator_random_int\"")
-        out.append("\t\t\t\tmin = 0")
-        out.append(f"\t\t\t\tmax = {len(pos_list) - 1}")
-        out.append("\t\t\t\toutput = \"PosChoice\"")
-        out.append("\t\t\t\tchild =")
-        out.append("\t\t\t\t{")
-        out.append("\t\t\t\t\ttype = \"sequencer\"")
-        out.append("\t\t\t\t\tchildren =")
-        out.append("\t\t\t\t\t[")
-        out.append("\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\ttype = \"selector\"")
-        out.append("\t\t\t\t\t\t\tchildren =")
-        out.append("\t\t\t\t\t\t\t[")
-        out.extend(build_position_step(pos_list, "\t\t\t\t\t\t\t\t"))
-        out.append("\t\t\t\t\t\t\t]")
-        out.append("\t\t\t\t\t\t},")
-        out.append("\t\t\t\t\t\t{")
-        out.append("\t\t\t\t\t\t\ttype = \"action_wait\"")
-        out.append("\t\t\t\t\t\t\twait_time_min = 14.0")
-        out.append("\t\t\t\t\t\t\twait_time_max = 18.0")
-        out.append("\t\t\t\t\t\t}")
-        out.append("\t\t\t\t\t]")
-        out.append("\t\t\t\t}")
-        out.append("\t\t\t}")
-        out.append("\t\t}")
+    # 2. Main position cycling (pick position, move, look_at, and hold 14-18s).
+    #    CRITICAL: the random roll must be a BARE sibling of the move inside the
+    #    sequencer, NOT a decorator wrapping it. CS2 re-rolls decorator_random_int
+    #    while its child runs, so wrapping the move makes the bot re-pick a new
+    #    destination every tick -> micro-step / freeze loop in spawn.
+    out.append("\t\t// Main position selector (non-interrupting move + hold)")
+    out.append("\t\t{")
+    out.append("\t\t\ttype = \"decorator_repeat\"")
+    out.append("\t\t\tchild =")
+    out.append("\t\t\t{")
+    out.append("\t\t\t\ttype = \"sequencer\"")
+    out.append("\t\t\t\tchildren =")
+    out.append("\t\t\t\t[")
+    out.append("\t\t\t\t\t{")
+    out.append("\t\t\t\t\t\ttype = \"action_equip_weapon\"")
+    out.append("\t\t\t\t\t\tweapon = \"BEST\"")
+    out.append("\t\t\t\t\t},")
+    out.append("\t\t\t\t\t{")
+    out.append("\t\t\t\t\t\ttype = \"decorator_random_int\"")
+    out.append("\t\t\t\t\t\tmin = 0")
+    out.append(f"\t\t\t\t\t\tmax = {len(pos_list) - 1}")
+    out.append("\t\t\t\t\t\toutput = \"PosChoice\"")
+    out.append("\t\t\t\t\t},")
+    out.append("\t\t\t\t\t{")
+    out.append("\t\t\t\t\t\ttype = \"selector\"")
+    out.append("\t\t\t\t\t\tchildren =")
+    out.append("\t\t\t\t\t\t[")
+    out.extend(build_position_step(pos_list, "\t\t\t\t\t\t\t"))
+    out.append("\t\t\t\t\t\t]")
+    out.append("\t\t\t\t\t}")
+    out.append("\t\t\t\t]")
+    out.append("\t\t\t}")
+    out.append("\t\t}")
 
     out.append("\t]")
     out.append("}")
@@ -214,13 +130,17 @@ def main():
 
     a_anchor_passive = sections.get("A Anchor - Passive (Role A1)", [])
     a_anchor_aggro = sections.get("A Anchor - Aggro (Role A1)", [])
+    a_anchor_all = a_anchor_passive + a_anchor_aggro
+
     a_rotate_passive = sections.get("A Rotate - Passive (Role A2)", [])
     a_rotate_aggro = sections.get("A Rotate - Aggro (Role A2)", [])
+    a_rotate_all = a_rotate_passive + a_rotate_aggro
+
     mid_player_all = sections.get("Mid Player (Role Mid)", [])
 
-    kv3_a_anchor = build_style_locked_kv3_module("bt_a_anchor", a_anchor_passive, a_anchor_aggro, "A Anchor Defense Module (Role A1)")
-    kv3_a_rotate = build_style_locked_kv3_module("bt_a_rotate", a_rotate_passive, a_rotate_aggro, "A Rotate Defense Module (Role A2)")
-    kv3_mid_player = build_style_locked_kv3_module("bt_mid_player", mid_player_all, [], "Mid Player Defense Module (Role Mid)")
+    kv3_a_anchor = build_kv3_module("bt_a_anchor", a_anchor_all, "A Anchor Defense Module (Role A1)")
+    kv3_a_rotate = build_kv3_module("bt_a_rotate", a_rotate_all, "A Rotate Defense Module (Role A2)")
+    kv3_mid_player = build_kv3_module("bt_mid_player", mid_player_all, "Mid Player Defense Module (Role Mid)")
 
     base = repo / "ln_mirage" / "modules"
     base.mkdir(parents=True, exist_ok=True)
@@ -228,7 +148,7 @@ def main():
     (base / "bt_a_rotate.kv3").write_text(kv3_a_rotate, encoding="utf-8")
     (base / "bt_mid_player.kv3").write_text(kv3_mid_player, encoding="utf-8")
 
-    print("Generated A and Mid modules for ln_mirage successfully.")
+    print("Generated clean A and Mid modules for ln_mirage successfully.")
 
 if __name__ == "__main__":
     main()
