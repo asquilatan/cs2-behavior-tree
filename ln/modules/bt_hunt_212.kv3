@@ -97,92 +97,26 @@
 				]
 			}
 		},
-		// Role 3: Site B (Bot 3)
+		// Role 3: Site B Anchor (Bot 3)
 		{
 			type = "decorator_try_lock"
 			domain = "'SplitB1'"
 			child =
 			{
-				type = "sequencer"
-				children =
-				[
-					{
-						type = "action_equip_weapon"
-						weapon = "BEST"
-					},
-					{
-						type = "decorator_random_int"
-						min = 1
-						max = 1
-						output = "BombSiteIndex"
-						child =
-						{
-							type = "action_choose_bomb_site_area"
-							input = "BombSiteIndex"
-							output = "HuntAreas"
-						}
-					},
-					{
-						type = "action_choose_random_waypoint"
-						input = "HuntAreas"
-						output = "TargetHuntArea"
-					},
-					{
-						type = "action_move_to"
-						destination = "TargetHuntArea"
-						movement_type = "BT_ACTION_MOVETO_RUN"
-						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-					},
-					{
-						type = "subtree"
-						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
-						name = "HoldB1"
-					}
-				]
+				type = "subtree"
+				file = "scripts/ai/ln/modules/bt_b_anchor.kv3"
+				name = "BAnchor"
 			}
 		},
-		// Role 4: Site B (Bot 4)
+		// Role 4: Site B Rotate (Bot 4)
 		{
 			type = "decorator_try_lock"
 			domain = "'SplitB2'"
 			child =
 			{
-				type = "sequencer"
-				children =
-				[
-					{
-						type = "action_equip_weapon"
-						weapon = "BEST"
-					},
-					{
-						type = "decorator_random_int"
-						min = 1
-						max = 1
-						output = "BombSiteIndex"
-						child =
-						{
-							type = "action_choose_bomb_site_area"
-							input = "BombSiteIndex"
-							output = "HuntAreas"
-						}
-					},
-					{
-						type = "action_choose_random_waypoint"
-						input = "HuntAreas"
-						output = "TargetHuntArea"
-					},
-					{
-						type = "action_move_to"
-						destination = "TargetHuntArea"
-						movement_type = "BT_ACTION_MOVETO_RUN"
-						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-					},
-					{
-						type = "subtree"
-						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
-						name = "HoldB2"
-					}
-				]
+				type = "subtree"
+				file = "scripts/ai/ln/modules/bt_b_rotate.kv3"
+				name = "BRotate"
 			}
 		},
 		// Role 5: Mid / Alt route (Bot 5)
