@@ -238,6 +238,117 @@
 								}
 							}
 						]
+					},
+					// Utility chain at cycle end (delay = the 14-18s hold, ~22-26s into
+					// the round): a sequencer, so every owned utility is thrown
+					// back-to-back in one decision - C4 molly -> C4 nade at -1292.25.
+					// Lineups from mirage_utility_lineups.md (Mid section; the LJ
+					// molly lineups need a jump throw and are not implemented yet).
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "sequencer"
+							children =
+							[
+								// C4 molly (same spot/angles as the nade)
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "condition_owns_item"
+											item = "weapon_molotov"
+										},
+										{
+											type = "sequencer"
+											children =
+											[
+												{
+													type = "action_equip_item"
+													item = "weapon_molotov"
+												},
+												{
+													type = "action_move_to"
+													destination = "-1292.248291 -1043.632935 -104.000000"
+													movement_type = "BT_ACTION_MOVETO_RUN"
+													route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+												},
+												{
+													type = "action_look_at"
+													input_angles = "2.992349 63.007816 0.000000"
+												},
+												{
+													type = "action_wait"
+													wait_time_min = 0.3
+													wait_time_max = 0.3
+												},
+												{
+													type = "action_pull_trigger"
+												},
+												{
+													type = "action_wait"
+													wait_time_min = 0.4
+													wait_time_max = 0.4
+												},
+												{
+													type = "action_equip_weapon"
+													weapon = "BEST"
+												}
+											]
+										}
+									]
+								},
+								// C4 nade (end of the chain at the same spot)
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "condition_owns_item"
+											item = "weapon_hegrenade"
+										},
+										{
+											type = "sequencer"
+											children =
+											[
+												{
+													type = "action_equip_item"
+													item = "weapon_hegrenade"
+												},
+												{
+													type = "action_move_to"
+													destination = "-1292.248291 -1043.632935 -104.000000"
+													movement_type = "BT_ACTION_MOVETO_RUN"
+													route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+												},
+												{
+													type = "action_look_at"
+													input_angles = "2.992349 63.007816 0.000000"
+												},
+												{
+													type = "action_wait"
+													wait_time_min = 0.3
+													wait_time_max = 0.3
+												},
+												{
+													type = "action_pull_trigger"
+												},
+												{
+													type = "action_wait"
+													wait_time_min = 0.4
+													wait_time_max = 0.4
+												},
+												{
+													type = "action_equip_weapon"
+													weapon = "BEST"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
 					}
 				]
 			}
