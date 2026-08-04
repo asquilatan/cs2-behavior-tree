@@ -72,13 +72,13 @@
 													},
 													{
 														type = "action_move_to"
-														destination = "-2415.968750 -115.765320 -98.834839"
+														destination = "-2415.956787 -115.757324 -98.835571"
 														movement_type = "BT_ACTION_MOVETO_RUN"
 														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 													},
 													{
 														type = "action_look_at"
-														input_angles = "-26.839996 43.224171 0.000000"
+														input_angles = "-26.884102 44.016365 0.000000"
 													},
 													// Let the view settle on the lineup angle before clicking
 													{

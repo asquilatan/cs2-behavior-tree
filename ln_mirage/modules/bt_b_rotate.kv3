@@ -125,13 +125,13 @@
 												},
 												{
 													type = "action_move_to"
-													destination = "-855.500488 78.386597 -103.468750"
+													destination = "-875.734741 288.144379 -105.325684"
 													movement_type = "BT_ACTION_MOVETO_RUN"
 													route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 												},
 												{
 													type = "action_look_at"
-													input_angles = "4.532338 -66.484047 0.000000"
+													input_angles = "-7.568376 -83.143478 0.000000"
 												},
 												{
 													type = "action_wait"
