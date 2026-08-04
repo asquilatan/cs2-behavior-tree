@@ -1426,6 +1426,77 @@
 								}
 							}
 						]
+					},
+					// Smoke throw decision at cycle end (delay = the 14-18s hold, so the
+					// first decision lands ~16s+ into the round). No global state: once the
+					// smoke is gone the equip fails and the cycle just falls through.
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								{
+									type = "sequencer"
+									children =
+									[
+										// Only throw if actually carrying a smoke
+										{
+											type = "condition_is_inv_slot_empty"
+											slot = "GRENADES"
+											negated = 1
+										},
+										// 50% per decision point
+										{
+											type = "decorator_maybe"
+											chance = 0.5
+											child =
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "action_equip_item"
+														item = "weapon_smokegrenade"
+													},
+													{
+														type = "action_move_to"
+														destination = "-572.710022 -1596.303101 -104.000000"
+														movement_type = "BT_ACTION_MOVETO_RUN"
+														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+													},
+													{
+														type = "action_look_at"
+														input_angles = "-16.895573 -44.616535 0.000000"
+													},
+													// Let the view settle on the lineup angle before clicking
+													{
+														type = "action_wait"
+														wait_time_min = 0.3
+														wait_time_max = 0.3
+													},
+													{
+														type = "action_pull_trigger"
+													},
+													// Keep the press held a beat so the throw registers,
+													// then re-equipping the rifle releases the button
+													{
+														type = "action_wait"
+														wait_time_min = 0.4
+														wait_time_max = 0.4
+													},
+													{
+														type = "action_equip_weapon"
+														weapon = "BEST"
+													}
+												]
+											}
+										}
+									]
+								}
+							]
+						}
 					}
 				]
 			}

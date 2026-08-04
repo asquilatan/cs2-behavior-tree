@@ -95,13 +95,23 @@
 							]
 						}
 					},
-					// Step 2: Buy armor
+					// Step 2: Buy armor (helmet first, plain kevlar fallback)
 					{
 						type = "decorator_succeed"
 						child =
 						{
-							type = "action_custom_buy"
-							item_aliases = [ "item_assaultsuit", "item_kevlar" ]
+							type = "selector"
+							children =
+							[
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "item_assaultsuit" ]
+								},
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "item_kevlar" ]
+								}
+							]
 						}
 					},
 					// Step 3: Buy pistol (60% Deagle, 40% Tec-9)
@@ -234,13 +244,23 @@
 							]
 						}
 					},
-					// Step 2: Buy armor
+					// Step 2: Buy armor (helmet first, plain kevlar fallback)
 					{
 						type = "decorator_succeed"
 						child =
 						{
-							type = "action_custom_buy"
-							item_aliases = [ "item_assaultsuit", "item_kevlar" ]
+							type = "selector"
+							children =
+							[
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "item_assaultsuit" ]
+								},
+								{
+									type = "action_custom_buy"
+									item_aliases = [ "item_kevlar" ]
+								}
+							]
 						}
 					},
 					// Step 3: Buy pistol (60% Deagle, 40% Five-SeveN)
@@ -273,6 +293,155 @@
 								{
 									type = "action_custom_buy"
 									item_aliases = [ "weapon_fiveseven" ]
+								}
+							]
+						}
+					},
+					// Step 4: Buy utility (weighted: 50% three, 10% four, 10% none,
+					// 15% one, 15% two)
+					{
+						type = "decorator_succeed"
+						child =
+						{
+							type = "selector"
+							children =
+							[
+								// 50%: smoke + flash + nade
+								{
+									type = "decorator_maybe"
+									chance = 0.5
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "decorator_succeed"
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_smokegrenade" ]
+												}
+											},
+											{
+												type = "decorator_succeed"
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_flashbang" ]
+												}
+											},
+											{
+												type = "decorator_succeed"
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_hegrenade" ]
+												}
+											}
+										]
+									}
+								},
+								// 10%: smoke + flash + flash + molly
+								{
+									type = "decorator_maybe"
+									chance = 0.2
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "decorator_succeed"
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_smokegrenade" ]
+												}
+											},
+											{
+												type = "decorator_succeed"
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_flashbang" ]
+												}
+											},
+											{
+												type = "decorator_succeed"
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_flashbang" ]
+												}
+											},
+											{
+												type = "decorator_succeed"
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_molotov" ]
+												}
+											}
+										]
+									}
+								},
+								// 10%: no grenades
+								{
+									type = "decorator_maybe"
+									chance = 0.25
+									child =
+									{
+										type = "decorator_succeed"
+									}
+								},
+								// 15%: one grenade (50/50 smoke or flash)
+								{
+									type = "decorator_maybe"
+									chance = 0.5
+									child =
+									{
+										type = "selector"
+										children =
+										[
+											{
+												type = "decorator_maybe"
+												chance = 0.5
+												child =
+												{
+													type = "action_custom_buy"
+													item_aliases = [ "weapon_smokegrenade" ]
+												}
+											},
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_flashbang" ]
+											}
+										]
+									}
+								},
+								// 15% (fallback): smoke + flash
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "decorator_succeed"
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_smokegrenade" ]
+											}
+										},
+										{
+											type = "decorator_succeed"
+											child =
+											{
+												type = "action_custom_buy"
+												item_aliases = [ "weapon_flashbang" ]
+											}
+										}
+									]
 								}
 							]
 						}
