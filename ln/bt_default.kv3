@@ -1,4 +1,4 @@
-﻿<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
 	config = "scripts/ai/ln/bt_config.kv3"
 	root =
@@ -281,29 +281,12 @@
 										}
 									}
 								},
-							// Else: hunt
+							// Else: 2-1-2 split hunt for all bots
 							{
-								// CTs run round tactics (site spread / bunch).
-								// TEMPORARY DIAGNOSTIC: CTs use the SAME per-bot random
-								// site module as the T hunt below (one-line swap to
-								// isolate action_choose_bomb_site_area from the
-								// try_lock/tier machinery).
-								type = "condition_is_equal"
-								source = "TeamName"
-								destination = "'CT'"
-								child =
-								{
-									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
-									name = "CtHuntRandomSite"
-								}
-							},
-								// Else: hunt (T) — per-bot random site
-								{
-									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
-									name = "HuntRandomSite"
-								}
+								type = "subtree"
+								file = "scripts/ai/ln/modules/bt_hunt_212.kv3"
+								name = "Hunt212"
+							}
 							]
 						}
 					}

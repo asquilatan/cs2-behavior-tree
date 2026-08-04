@@ -8,7 +8,7 @@
 	shape =
 	{
 		type = "sensor_shape_sphere"
-		radius = 3000
+		radius = 1500
 	}
 	entity_type_filter = "NOISE"
 	output = "Hearing"

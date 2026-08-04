@@ -47,7 +47,7 @@
 					},
 					{
 						type = "subtree"
-						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
 						name = "HoldA1"
 					}
 				]
@@ -91,7 +91,7 @@
 					},
 					{
 						type = "subtree"
-						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
 						name = "HoldA2"
 					}
 				]
@@ -135,7 +135,7 @@
 					},
 					{
 						type = "subtree"
-						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
 						name = "HoldB1"
 					}
 				]
@@ -179,7 +179,7 @@
 					},
 					{
 						type = "subtree"
-						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
 						name = "HoldB2"
 					}
 				]
@@ -223,7 +223,7 @@
 					},
 					{
 						type = "subtree"
-						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
 						name = "HoldMid"
 					}
 				]
@@ -232,7 +232,7 @@
 		// Fallback for extra bots
 		{
 			type = "subtree"
-			file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+			file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
 			name = "HuntRandomSiteFallback"
 		}
 	]
