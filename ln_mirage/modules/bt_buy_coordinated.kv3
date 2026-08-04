@@ -297,151 +297,79 @@
 							]
 						}
 					},
-					// Step 4: Buy utility (weighted: 50% three, 10% four, 10% none,
-					// 15% one, 15% two)
+					// Step 4: Buy utility (smoke + molly + flash guaranteed = 3; 50%
+					// chance of a 4th slot: second flash 70% or nade 30%, so the nade
+					// is the rarest pickup). Averages ~3.5 grenades.
 					{
 						type = "decorator_succeed"
 						child =
 						{
-							type = "selector"
+							type = "sequencer"
 							children =
 							[
-								// 50%: smoke + flash + nade
+								// Smoke (guaranteed)
 								{
-									type = "decorator_maybe"
-									chance = 0.5
+									type = "decorator_succeed"
 									child =
 									{
-										type = "sequencer"
-										children =
-										[
-											{
-												type = "decorator_succeed"
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_smokegrenade" ]
-												}
-											},
-											{
-												type = "decorator_succeed"
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_flashbang" ]
-												}
-											},
-											{
-												type = "decorator_succeed"
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_hegrenade" ]
-												}
-											}
-										]
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_smokegrenade" ]
 									}
 								},
-								// 10%: smoke + flash + flash + molly
+								// Molly (guaranteed)
 								{
-									type = "decorator_maybe"
-									chance = 0.2
+									type = "decorator_succeed"
 									child =
 									{
-										type = "sequencer"
-										children =
-										[
-											{
-												type = "decorator_succeed"
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_smokegrenade" ]
-												}
-											},
-											{
-												type = "decorator_succeed"
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_flashbang" ]
-												}
-											},
-											{
-												type = "decorator_succeed"
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_flashbang" ]
-												}
-											},
-											{
-												type = "decorator_succeed"
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_molotov" ]
-												}
-											}
-										]
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_incgrenade", "weapon_molotov" ]
 									}
 								},
-								// 10%: no grenades
+								// Flash (guaranteed)
 								{
-									type = "decorator_maybe"
-									chance = 0.25
+									type = "decorator_succeed"
 									child =
 									{
-										type = "decorator_succeed"
+										type = "action_custom_buy"
+										item_aliases = [ "weapon_flashbang" ]
 									}
 								},
-								// 15%: one grenade (50/50 smoke or flash)
+								// 4th slot (50%): second flash (70%) or nade (30%)
 								{
-									type = "decorator_maybe"
-									chance = 0.5
+									type = "decorator_succeed"
 									child =
 									{
-										type = "selector"
-										children =
-										[
-											{
-												type = "decorator_maybe"
-												chance = 0.5
-												child =
-												{
-													type = "action_custom_buy"
-													item_aliases = [ "weapon_smokegrenade" ]
-												}
-											},
-											{
-												type = "action_custom_buy"
-												item_aliases = [ "weapon_flashbang" ]
-											}
-										]
-									}
-								},
-								// 15% (fallback): smoke + flash
-								{
-									type = "sequencer"
-									children =
-									[
+										type = "decorator_maybe"
+										chance = 0.5
+										child =
 										{
-											type = "decorator_succeed"
-											child =
-											{
-												type = "action_custom_buy"
-												item_aliases = [ "weapon_smokegrenade" ]
-											}
-										},
-										{
-											type = "decorator_succeed"
-											child =
-											{
-												type = "action_custom_buy"
-												item_aliases = [ "weapon_flashbang" ]
-											}
+											type = "selector"
+											children =
+											[
+												{
+													type = "decorator_maybe"
+													chance = 0.7
+													child =
+													{
+														type = "decorator_succeed"
+														child =
+														{
+															type = "action_custom_buy"
+															item_aliases = [ "weapon_flashbang" ]
+														}
+													}
+												},
+												{
+													type = "decorator_succeed"
+													child =
+													{
+														type = "action_custom_buy"
+														item_aliases = [ "weapon_hegrenade" ]
+													}
+												}
+											]
 										}
-									]
+									}
 								}
 							]
 						}

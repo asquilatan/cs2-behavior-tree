@@ -124,6 +124,7 @@ def build_kv3_module(name: str, pos_list: list[tuple[str, str]], doc_comment: st
     return "\n".join(out)
 
 def main():
+    print("DEPRECATED: use generate_util_modules.py (keeps the early/cycle-end utility blocks).")
     repo = Path(__file__).resolve().parent
     md = repo / "ln_mirage" / "mirage_a_mid_positions.md"
     sections = parse_positions(md)
