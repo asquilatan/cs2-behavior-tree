@@ -1,0 +1,239 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// Unified 2-1-2 split module for all bots (team-independent).
+	// Decorator try_lock on 5 domains assigns:
+	//   - 2 bots to Site A (index 0)
+	//   - 2 bots to Site B (index 1)
+	//   - 1 bot to Mid / alternate route
+	// If all locks are claimed, fallback to standard per-bot random site hunt.
+	type = "selector"
+	children =
+	[
+		// Role 1: Site A (Bot 1)
+		{
+			type = "decorator_try_lock"
+			domain = "'SplitA1'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					{
+						type = "action_equip_weapon"
+						weapon = "BEST"
+					},
+					{
+						type = "decorator_random_int"
+						min = 0
+						max = 0
+						output = "BombSiteIndex"
+						child =
+						{
+							type = "action_choose_bomb_site_area"
+							input = "BombSiteIndex"
+							output = "HuntAreas"
+						}
+					},
+					{
+						type = "action_choose_random_waypoint"
+						input = "HuntAreas"
+						output = "TargetHuntArea"
+					},
+					{
+						type = "action_move_to"
+						destination = "TargetHuntArea"
+						movement_type = "BT_ACTION_MOVETO_RUN"
+						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+					},
+					{
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "HoldA1"
+					}
+				]
+			}
+		},
+		// Role 2: Site A (Bot 2)
+		{
+			type = "decorator_try_lock"
+			domain = "'SplitA2'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					{
+						type = "action_equip_weapon"
+						weapon = "BEST"
+					},
+					{
+						type = "decorator_random_int"
+						min = 0
+						max = 0
+						output = "BombSiteIndex"
+						child =
+						{
+							type = "action_choose_bomb_site_area"
+							input = "BombSiteIndex"
+							output = "HuntAreas"
+						}
+					},
+					{
+						type = "action_choose_random_waypoint"
+						input = "HuntAreas"
+						output = "TargetHuntArea"
+					},
+					{
+						type = "action_move_to"
+						destination = "TargetHuntArea"
+						movement_type = "BT_ACTION_MOVETO_RUN"
+						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+					},
+					{
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "HoldA2"
+					}
+				]
+			}
+		},
+		// Role 3: Site B (Bot 3)
+		{
+			type = "decorator_try_lock"
+			domain = "'SplitB1'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					{
+						type = "action_equip_weapon"
+						weapon = "BEST"
+					},
+					{
+						type = "decorator_random_int"
+						min = 1
+						max = 1
+						output = "BombSiteIndex"
+						child =
+						{
+							type = "action_choose_bomb_site_area"
+							input = "BombSiteIndex"
+							output = "HuntAreas"
+						}
+					},
+					{
+						type = "action_choose_random_waypoint"
+						input = "HuntAreas"
+						output = "TargetHuntArea"
+					},
+					{
+						type = "action_move_to"
+						destination = "TargetHuntArea"
+						movement_type = "BT_ACTION_MOVETO_RUN"
+						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+					},
+					{
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "HoldB1"
+					}
+				]
+			}
+		},
+		// Role 4: Site B (Bot 4)
+		{
+			type = "decorator_try_lock"
+			domain = "'SplitB2'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					{
+						type = "action_equip_weapon"
+						weapon = "BEST"
+					},
+					{
+						type = "decorator_random_int"
+						min = 1
+						max = 1
+						output = "BombSiteIndex"
+						child =
+						{
+							type = "action_choose_bomb_site_area"
+							input = "BombSiteIndex"
+							output = "HuntAreas"
+						}
+					},
+					{
+						type = "action_choose_random_waypoint"
+						input = "HuntAreas"
+						output = "TargetHuntArea"
+					},
+					{
+						type = "action_move_to"
+						destination = "TargetHuntArea"
+						movement_type = "BT_ACTION_MOVETO_RUN"
+						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+					},
+					{
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "HoldB2"
+					}
+				]
+			}
+		},
+		// Role 5: Mid / Alt route (Bot 5)
+		{
+			type = "decorator_try_lock"
+			domain = "'SplitMid'"
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					{
+						type = "action_equip_weapon"
+						weapon = "BEST"
+					},
+					{
+						type = "decorator_random_int"
+						min = 0
+						max = 1
+						output = "MidSiteIndex"
+						child =
+						{
+							type = "action_choose_bomb_site_area"
+							input = "MidSiteIndex"
+							output = "MidHuntAreas"
+						}
+					},
+					{
+						type = "action_choose_random_waypoint"
+						input = "MidHuntAreas"
+						output = "TargetMidArea"
+					},
+					{
+						type = "action_move_to"
+						destination = "TargetMidArea"
+						movement_type = "BT_ACTION_MOVETO_WALK"
+						route_type = "BT_ACTION_MOVETO_SAFEST_ROUTE"
+					},
+					{
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "HoldMid"
+					}
+				]
+			}
+		},
+		// Fallback for extra bots
+		{
+			type = "subtree"
+			file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+			name = "HuntRandomSiteFallback"
+		}
+	]
+}
