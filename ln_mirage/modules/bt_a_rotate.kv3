@@ -33,17 +33,177 @@
 			{
 				type = "sequencer"
 				children =
-				[
-					{
-						type = "action_equip_weapon"
-						weapon = "BEST"
-					},
-					{
-						type = "decorator_random_int"
-						min = 0
-						max = 50
-						output = "PosChoice"
-					},
+					[
+						{
+							type = "action_equip_weapon"
+							weapon = "BEST"
+						},
+						// Early utility throw (right off the bat, ~6-10s into the round):
+						// C2 molly -> C2 nade -> C3 flash, one per cycle start, guaranteed
+						// while owned. Smokes stay at cycle end (see below).
+						{
+							type = "decorator_succeed"
+							child =
+							{
+								type = "selector"
+								children =
+								[
+									// C2 molly (same spot/angles as the nade)
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "condition_owns_item"
+												item = "weapon_molotov"
+											},
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "action_equip_item"
+														item = "weapon_molotov"
+													},
+													{
+														type = "action_move_to"
+														destination = "-1119.946167 -1527.968750 -96.612793"
+														movement_type = "BT_ACTION_MOVETO_RUN"
+														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+													},
+													{
+														type = "action_look_at"
+														input_angles = "-16.675610 -0.264535 0.000000"
+													},
+													// Let the view settle on the lineup angle before clicking
+													{
+														type = "action_wait"
+														wait_time_min = 0.3
+														wait_time_max = 0.3
+													},
+													{
+														type = "action_pull_trigger"
+													},
+													// Keep the press held a beat so the throw registers,
+													// then re-equipping the rifle releases the button
+													{
+														type = "action_wait"
+														wait_time_min = 0.4
+														wait_time_max = 0.4
+													},
+													{
+														type = "action_equip_weapon"
+														weapon = "BEST"
+													}
+												]
+											}
+										]
+									},
+									// C2 nade
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "condition_owns_item"
+												item = "weapon_hegrenade"
+											},
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "action_equip_item"
+														item = "weapon_hegrenade"
+													},
+													{
+														type = "action_move_to"
+														destination = "-1119.946167 -1527.968750 -96.612793"
+														movement_type = "BT_ACTION_MOVETO_RUN"
+														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+													},
+													{
+														type = "action_look_at"
+														input_angles = "-16.675610 -0.264535 0.000000"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.3
+														wait_time_max = 0.3
+													},
+													{
+														type = "action_pull_trigger"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.4
+														wait_time_max = 0.4
+													},
+													{
+														type = "action_equip_weapon"
+														weapon = "BEST"
+													}
+												]
+											}
+										]
+									},
+									// C3 flash
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "condition_owns_item"
+												item = "weapon_flashbang"
+											},
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "action_equip_item"
+														item = "weapon_flashbang"
+													},
+													{
+														type = "action_move_to"
+														destination = "-817.968445 -1502.783081 -104.000000"
+														movement_type = "BT_ACTION_MOVETO_RUN"
+														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+													},
+													{
+														type = "action_look_at"
+														input_angles = "-41.315659 42.591770 0.000000"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.3
+														wait_time_max = 0.3
+													},
+													{
+														type = "action_pull_trigger"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.4
+														wait_time_max = 0.4
+													},
+													{
+														type = "action_equip_weapon"
+														weapon = "BEST"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						},
+						{
+							type = "decorator_random_int"
+							min = 0
+							max = 50
+							output = "PosChoice"
+						},
 					{
 						type = "selector"
 						children =
@@ -1427,9 +1587,11 @@
 							}
 						]
 					},
-					// Smoke throw decision at cycle end (delay = the 14-18s hold, so the
-					// first decision lands ~16s+ into the round). No global state: once the
-					// smoke is gone the equip fails and the cycle just falls through.
+					// Smoke decision at cycle end (delay = the 14-18s hold, so the smoke
+					// lands ~16-23s into the round). No global state: once the smoke is
+					// gone the condition fails and the cycle falls through. Priority:
+					//   main smoke (50%) -> C3 smoke fallback (guarantees the smoke out)
+					// Lineups from mirage_utility_lineups.md (A Rotate section).
 					{
 						type = "decorator_succeed"
 						child =
@@ -1437,15 +1599,14 @@
 							type = "selector"
 							children =
 							[
+								// 1. Main smoke lineup
 								{
 									type = "sequencer"
 									children =
 									[
-										// Only throw if actually carrying a smoke
 										{
-											type = "condition_is_inv_slot_empty"
-											slot = "GRENADES"
-											negated = 1
+											type = "condition_owns_item"
+											item = "weapon_smokegrenade"
 										},
 										// 50% per decision point
 										{
@@ -1462,13 +1623,13 @@
 													},
 													{
 														type = "action_move_to"
-														destination = "-572.710022 -1596.303101 -104.000000"
+														destination = "-793.021057 -1306.067383 -104.000000"
 														movement_type = "BT_ACTION_MOVETO_RUN"
 														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 													},
 													{
 														type = "action_look_at"
-														input_angles = "-16.895573 -44.616535 0.000000"
+														input_angles = "-25.168028 -46.171848 0.000000"
 													},
 													// Let the view settle on the lineup angle before clicking
 													{
@@ -1494,7 +1655,56 @@
 											}
 										}
 									]
-								}
+								},
+								// 2. C3 smoke (fallback lineup, no dice - the smoke always
+								// comes out on the first decision point, 50/50 which spot)
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "condition_owns_item"
+											item = "weapon_smokegrenade"
+										},
+										{
+											type = "sequencer"
+											children =
+											[
+												{
+													type = "action_equip_item"
+													item = "weapon_smokegrenade"
+												},
+												{
+													type = "action_move_to"
+													destination = "-722.532959 -1306.031250 -104.000000"
+													movement_type = "BT_ACTION_MOVETO_RUN"
+													route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+												},
+												{
+													type = "action_look_at"
+													input_angles = "2.596329 84.743759 0.000000"
+												},
+												{
+													type = "action_wait"
+													wait_time_min = 0.3
+													wait_time_max = 0.3
+												},
+												{
+													type = "action_pull_trigger"
+												},
+												{
+													type = "action_wait"
+													wait_time_min = 0.4
+													wait_time_max = 0.4
+												},
+												{
+													type = "action_equip_weapon"
+													weapon = "BEST"
+												}
+											]
+										}
+									]
+								},
 							]
 						}
 					}
