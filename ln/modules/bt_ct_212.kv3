@@ -1,16 +1,17 @@
 <!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	// Unified 2-1-2 split module for all bots (team-independent).
-	// B-side roles (SplitB1, SplitB2) use direct scripted setpos/setang anchors.
-	// A-side and Mid roles move directly to spread-out site waypoints without
-	// calling action_choose_bomb_site_area to avoid clumping at the site center.
+	// CT 2-1-2 Defensive Split module.
+	// Assigns 5 CT defensive roles:
+	//   - 2 CTs to Site A
+	//   - 2 CTs to Site B (B Anchor & B Rotate via scripted setpos/setang)
+	//   - 1 CT to Mid / Rotator
 	type = "selector"
 	children =
 	[
-		// Role 1: Site A Anchor 1 (Bot 1)
+		// CT Role 1: Site A Anchor 1
 		{
 			type = "decorator_try_lock"
-			domain = "'SplitA1'"
+			domain = "'CtSplitA1'"
 			child =
 			{
 				type = "sequencer"
@@ -24,11 +25,11 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "412.27 -1648.28 -160.13"
 						radius = 600
-						output = "TargetHuntAreaA1"
+						output = "CtTargetAreaA1"
 					},
 					{
 						type = "action_move_to"
-						destination = "TargetHuntAreaA1"
+						destination = "CtTargetAreaA1"
 						movement_type = "BT_ACTION_MOVETO_RUN"
 						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 					},
@@ -40,10 +41,10 @@
 				]
 			}
 		},
-		// Role 2: Site A Anchor 2 (Bot 2)
+		// CT Role 2: Site A Anchor 2
 		{
 			type = "decorator_try_lock"
-			domain = "'SplitA2'"
+			domain = "'CtSplitA2'"
 			child =
 			{
 				type = "sequencer"
@@ -57,11 +58,11 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "230.15 -2280.08 24.00"
 						radius = 600
-						output = "TargetHuntAreaA2"
+						output = "CtTargetAreaA2"
 					},
 					{
 						type = "action_move_to"
-						destination = "TargetHuntAreaA2"
+						destination = "CtTargetAreaA2"
 						movement_type = "BT_ACTION_MOVETO_RUN"
 						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 					},
@@ -73,32 +74,32 @@
 				]
 			}
 		},
-		// Role 3: Site B Anchor (Bot 3)
+		// CT Role 3: Site B Anchor (Scripted setpos/setang)
 		{
 			type = "decorator_try_lock"
-			domain = "'SplitB1'"
+			domain = "'CtSplitB1'"
 			child =
 			{
 				type = "subtree"
 				file = "scripts/ai/ln/modules/bt_b_anchor.kv3"
-				name = "BAnchor"
+				name = "CtBAnchor"
 			}
 		},
-		// Role 4: Site B Rotate (Bot 4)
+		// CT Role 4: Site B Rotate (Scripted setpos/setang)
 		{
 			type = "decorator_try_lock"
-			domain = "'SplitB2'"
+			domain = "'CtSplitB2'"
 			child =
 			{
 				type = "subtree"
 				file = "scripts/ai/ln/modules/bt_b_rotate.kv3"
-				name = "BRotate"
+				name = "CtBRotate"
 			}
 		},
-		// Role 5: Mid / Alt route (Bot 5)
+		// CT Role 5: Mid / Rotator
 		{
 			type = "decorator_try_lock"
-			domain = "'SplitMid'"
+			domain = "'CtSplitMid'"
 			child =
 			{
 				type = "sequencer"
@@ -112,11 +113,11 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "268.00 -13.74 -135.66"
 						radius = 500
-						output = "TargetMidArea"
+						output = "CtTargetMidArea"
 					},
 					{
 						type = "action_move_to"
-						destination = "TargetMidArea"
+						destination = "CtTargetMidArea"
 						movement_type = "BT_ACTION_MOVETO_WALK"
 						route_type = "BT_ACTION_MOVETO_SAFEST_ROUTE"
 					},
@@ -128,11 +129,11 @@
 				]
 			}
 		},
-		// Fallback for extra bots
+		// CT Fallback
 		{
 			type = "subtree"
 			file = "scripts/ai/ln/modules/bt_b_rotate.kv3"
-			name = "HuntRandomSiteFallback"
+			name = "CtFallback"
 		}
 	]
 }

@@ -281,11 +281,35 @@
 										}
 									}
 								},
-							// Else: 2-1-2 split hunt for all bots
+							// Else: CT 2-1-2 defensive setup (with scripted setpos/setang anchors)
+							{
+								type = "condition_is_equal"
+								source = "TeamName"
+								destination = "'CT'"
+								child =
+								{
+									type = "subtree"
+									file = "scripts/ai/ln/modules/bt_ct_212.kv3"
+									name = "Ct212"
+								}
+							},
+							// Else: T 2-1-2 attack split
+							{
+								type = "condition_is_equal"
+								source = "TeamName"
+								destination = "'T'"
+								child =
+								{
+									type = "subtree"
+									file = "scripts/ai/ln/modules/bt_t_212.kv3"
+									name = "T212"
+								}
+							},
+							// Fallback hunt
 							{
 								type = "subtree"
-								file = "scripts/ai/ln/modules/bt_hunt_212.kv3"
-								name = "Hunt212"
+								file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
+								name = "HuntRandomSite"
 							}
 							]
 						}
