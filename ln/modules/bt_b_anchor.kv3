@@ -41,7 +41,7 @@
 					{
 						type = "decorator_random_int"
 						min = 0
-						max = 22
+						max = 35
 						output = "PosChoice"
 					},
 					{
@@ -660,6 +660,357 @@
 										{
 											type = "action_look_at"
 											input_angles = "-6.555990 44.768547 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 23
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2415.955322 -115.757324 -98.835754"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.880008 14.583814 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 24
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2410.658936 -178.743469 -99.561890"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.704007 77.107773 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 25
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2352.200439 -371.786133 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.087995 58.979809 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 26
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2367.911377 -618.283997 -56.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "2.904008 84.279915 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 27
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2301.949951 -653.070068 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.175991 87.931831 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 28
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2243.771484 -635.309937 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.219991 99.943840 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 29
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2195.379150 -647.930237 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-0.615991 112.659851 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 30
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2131.721436 -647.929321 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.836009 61.531887 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 31
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-2063.812988 -641.925903 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-4.267991 71.739838 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 32
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1866.750122 -641.503967 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "-2.111993 101.747894 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 33
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1731.255615 -632.049744 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.264007 118.467880 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 34
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1605.878174 -548.729980 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.264007 173.468002 0.000000"
+										},
+										{
+											type = "action_wait"
+											wait_time_min = 14.0
+											wait_time_max = 18.0
+										}
+									]
+								}
+							},
+							{
+								type = "condition_is_equal"
+								source = "PosChoice"
+								destination = 35
+								child =
+								{
+									type = "sequencer"
+									children =
+									[
+										{
+											type = "action_move_to"
+											destination = "-1611.673706 -504.030273 -104.000000"
+											movement_type = "BT_ACTION_MOVETO_RUN"
+											route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+										},
+										{
+											type = "action_look_at"
+											input_angles = "0.484007 177.955994 0.000000"
 										},
 										{
 											type = "action_wait"

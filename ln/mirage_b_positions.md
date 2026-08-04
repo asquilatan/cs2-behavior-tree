@@ -26,6 +26,19 @@ Format: `Position Name -> Target Zone` = `setpos X Y Z; setang Pitch Yaw Roll`
 21. `bench -> apps`: `setpos -2498.331055 219.984970 -103.972046;setang -8.183994 46.924561 0.000000`
 22. `bench offangle -> apps drop`: `setpos -2450.202393 104.031677 -101.464600;setang -7.655993 62.852592 0.000000`
 23. `bench offangle -> apps (awper angle)`: `setpos -2367.927734 80.248795 -100.024963;setang -6.555990 44.768547 0.000000`
+24. `trashbin -> b site right`: `setpos -2415.955322 -115.757324 -98.835754;setang 0.880008 14.583814 0.000000`
+25. `trashbin -> b site left`: `setpos -2410.658936 -178.743469 -99.561890;setang 0.704007 77.107773 0.000000`
+26. `market door -> b site inner`: `setpos -2352.200439 -371.786133 -104.000000;setang -0.087995 58.979809 0.000000`
+27. `market -> b site left`: `setpos -2367.911377 -618.283997 -56.000000;setang 2.904008 84.279915 0.000000`
+28. `market -> b site left`: `setpos -2301.949951 -653.070068 -104.000000;setang -0.175991 87.931831 0.000000`
+29. `market -> b site bench`: `setpos -2243.771484 -635.309937 -104.000000;setang -0.219991 99.943840 0.000000`
+30. `market -> market door`: `setpos -2195.379150 -647.930237 -104.000000;setang -0.615991 112.659851 0.000000`
+31. `market window -> short`: `setpos -2131.721436 -647.929321 -104.000000;setang 0.836009 61.531887 0.000000`
+32. `market window -> apps`: `setpos -2063.812988 -641.925903 -104.000000;setang -4.267991 71.739838 0.000000`
+33. `market window -> van`: `setpos -1866.750122 -641.503967 -104.000000;setang -2.111993 101.747894 0.000000`
+34. `market window -> site`: `setpos -1731.255615 -632.049744 -104.000000;setang 0.264007 118.467880 0.000000`
+35. `market cashier -> market door`: `setpos -1605.878174 -548.729980 -104.000000;setang 0.264007 173.468002 0.000000`
+36. `market cashier -> market door`: `setpos -1611.673706 -504.030273 -104.000000;setang 0.484007 177.955994 0.000000`
 
 ## B Rotate - Aggro (Role B2)
 1. `b short -> mid`: `setpos -884.271667 -327.847168 -102.556641;setang -0.044002 -1.159559 0.000000`
