@@ -1,0 +1,75 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// CT 2-1-2 Defensive Split module (Mirage fully scripted setpos/setang).
+	// Assigns 5 CT defensive roles:
+	//   - CtSplitA1: Site A Anchor (bt_a_anchor.kv3 - 70 scripted positions)
+	//   - CtSplitA2: Site A Rotate (bt_a_rotate.kv3 - 51 scripted positions)
+	//   - CtSplitB1: Site B Anchor (bt_b_anchor.kv3 - 36 scripted positions)
+	//   - CtSplitB2: Site B Rotate (bt_b_rotate.kv3 - 22 scripted positions)
+	//   - CtSplitMid: Mid Player    (bt_mid_player.kv3 - 7 scripted positions)
+	type = "selector"
+	children =
+	[
+		// CT Role 1: Site A Anchor (Scripted setpos/setang)
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitA1'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_a_anchor.kv3"
+				name = "CtAAnchor"
+			}
+		},
+		// CT Role 2: Site A Rotate (Scripted setpos/setang)
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitA2'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_a_rotate.kv3"
+				name = "CtARotate"
+			}
+		},
+		// CT Role 3: Site B Anchor (Scripted setpos/setang)
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitB1'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_b_anchor.kv3"
+				name = "CtBAnchor"
+			}
+		},
+		// CT Role 4: Site B Rotate (Scripted setpos/setang)
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitB2'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_b_rotate.kv3"
+				name = "CtBRotate"
+			}
+		},
+		// CT Role 5: Mid Player (Scripted setpos/setang)
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitMid'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_mirage/modules/bt_mid_player.kv3"
+				name = "CtMidPlayer"
+			}
+		},
+		// CT Fallback
+		{
+			type = "subtree"
+			file = "scripts/ai/ln_mirage/modules/bt_b_rotate.kv3"
+			name = "CtFallback"
+		}
+	]
+}

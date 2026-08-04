@@ -1,0 +1,241 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	// Mid Player Defense Module (Role Mid)
+	type = "selector"
+	children =
+	[
+		// Instant hold when noise/event heard within hearing radius
+		{
+			type = "condition_is_empty"
+			input = "ShortTermInvestigateMemory"
+			negated = 1
+			child =
+			{
+				type = "sequencer"
+				children =
+				[
+					{
+						type = "action_look_at"
+						input_location = "ShortTermInvestigateMemory"
+					},
+					{
+						type = "action_wait"
+						wait_time_min = 4
+						wait_time_max = 8
+					}
+				]
+			}
+		},
+		// Single pool position cycling
+		{
+			type = "decorator_repeat"
+			child =
+			{
+				type = "decorator_random_int"
+				min = 0
+				max = 6
+				output = "PosChoice"
+				child =
+				{
+					type = "sequencer"
+					children =
+					[
+						{
+							type = "selector"
+							children =
+							[
+								{
+									type = "condition_is_equal"
+									source = "PosChoice"
+									destination = 0
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "action_equip_weapon"
+												weapon = "BEST"
+											},
+											{
+												type = "action_move_to"
+												destination = "-1311.947510 -1155.527100 -104.000000"
+												movement_type = "BT_ACTION_MOVETO_RUN"
+												route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+											},
+											{
+												type = "action_look_at"
+												input_angles = "-3.916076 -37.384354 0.000000"
+											}
+										]
+									}
+								},
+								{
+									type = "condition_is_equal"
+									source = "PosChoice"
+									destination = 1
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "action_equip_weapon"
+												weapon = "BEST"
+											},
+											{
+												type = "action_move_to"
+												destination = "-1311.307251 -1024.559937 -104.000000"
+												movement_type = "BT_ACTION_MOVETO_RUN"
+												route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+											},
+											{
+												type = "action_look_at"
+												input_angles = "0.835924 58.579670 0.000000"
+											}
+										]
+									}
+								},
+								{
+									type = "condition_is_equal"
+									source = "PosChoice"
+									destination = 2
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "action_equip_weapon"
+												weapon = "BEST"
+											},
+											{
+												type = "action_move_to"
+												destination = "-1247.241455 -919.143616 -66.000000"
+												movement_type = "BT_ACTION_MOVETO_RUN"
+												route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+											},
+											{
+												type = "action_look_at"
+												input_angles = "4.531919 57.215614 0.000000"
+											}
+										]
+									}
+								},
+								{
+									type = "condition_is_equal"
+									source = "PosChoice"
+									destination = 3
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "action_equip_weapon"
+												weapon = "BEST"
+											},
+											{
+												type = "action_move_to"
+												destination = "-1120.031250 -1175.947754 -104.000000"
+												movement_type = "BT_ACTION_MOVETO_RUN"
+												route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+											},
+											{
+												type = "action_look_at"
+												input_angles = "0.483922 90.435577 0.000000"
+											}
+										]
+									}
+								},
+								{
+									type = "condition_is_equal"
+									source = "PosChoice"
+									destination = 4
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "action_equip_weapon"
+												weapon = "BEST"
+											},
+											{
+												type = "action_move_to"
+												destination = "-1120.064697 -1084.141968 -67.890625"
+												movement_type = "BT_ACTION_MOVETO_RUN"
+												route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+											},
+											{
+												type = "action_look_at"
+												input_angles = "6.731917 90.391472 0.000000"
+											}
+										]
+									}
+								},
+								{
+									type = "condition_is_equal"
+									source = "PosChoice"
+									destination = 5
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "action_equip_weapon"
+												weapon = "BEST"
+											},
+											{
+												type = "action_move_to"
+												destination = "-1174.402710 -731.117310 -104.000000"
+												movement_type = "BT_ACTION_MOVETO_RUN"
+												route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+											},
+											{
+												type = "action_look_at"
+												input_angles = "0.351918 18.011463 0.000000"
+											}
+										]
+									}
+								},
+								{
+									type = "condition_is_equal"
+									source = "PosChoice"
+									destination = 6
+									child =
+									{
+										type = "sequencer"
+										children =
+										[
+											{
+												type = "action_equip_weapon"
+												weapon = "BEST"
+											},
+											{
+												type = "action_move_to"
+												destination = "-1219.725464 -522.195068 -104.000000"
+												movement_type = "BT_ACTION_MOVETO_RUN"
+												route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+											},
+											{
+												type = "action_look_at"
+												input_angles = "0.263918 -10.060527 0.000000"
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							type = "action_wait"
+							wait_time_min = 14.0
+							wait_time_max = 18.0
+						}
+					]
+				}
+			}
+		}
+	]
+}

@@ -1,17 +1,17 @@
 <!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	// Map-agnostic CT 2-1-2 Defensive Split module.
-	// Assigns 5 CT defensive roles using area waypoints:
-	//   - 2 CTs to Site A (CtSplitA1, CtSplitA2)
-	//   - 2 CTs to Site B (CtSplitB1, CtSplitB2)
-	//   - 1 CT to Mid (CtSplitMid)
+	// Terrorist 2-1-2 Attack Split module.
+	// Assigns 5 T roles:
+	//   - 2 Ts push Site A
+	//   - 2 Ts push Site B
+	//   - 1 T pushes Mid / Flank
 	type = "selector"
 	children =
 	[
-		// CT Role 1: Site A Defensive Hold 1
+		// T Role 1: Site A Push 1
 		{
 			type = "decorator_try_lock"
-			domain = "'CtSplitA1'"
+			domain = "'TSplitA1'"
 			child =
 			{
 				type = "sequencer"
@@ -25,26 +25,26 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "412.27 -1648.28 -160.13"
 						radius = 600
-						output = "CtTargetAreaA1"
+						output = "TTargetAreaA1"
 					},
 					{
 						type = "action_move_to"
-						destination = "CtTargetAreaA1"
+						destination = "TTargetAreaA1"
 						movement_type = "BT_ACTION_MOVETO_RUN"
 						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 					},
 					{
-						type = "action_wait"
-						wait_time_min = 14.0
-						wait_time_max = 18.0
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "THoldA1"
 					}
 				]
 			}
 		},
-		// CT Role 2: Site A Defensive Hold 2
+		// T Role 2: Site A Push 2
 		{
 			type = "decorator_try_lock"
-			domain = "'CtSplitA2'"
+			domain = "'TSplitA2'"
 			child =
 			{
 				type = "sequencer"
@@ -58,26 +58,26 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "230.15 -2280.08 24.00"
 						radius = 600
-						output = "CtTargetAreaA2"
+						output = "TTargetAreaA2"
 					},
 					{
 						type = "action_move_to"
-						destination = "CtTargetAreaA2"
+						destination = "TTargetAreaA2"
 						movement_type = "BT_ACTION_MOVETO_RUN"
 						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 					},
 					{
-						type = "action_wait"
-						wait_time_min = 14.0
-						wait_time_max = 18.0
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "THoldA2"
 					}
 				]
 			}
 		},
-		// CT Role 3: Site B Defensive Hold 1
+		// T Role 3: Site B Push 1
 		{
 			type = "decorator_try_lock"
-			domain = "'CtSplitB1'"
+			domain = "'TSplitB1'"
 			child =
 			{
 				type = "sequencer"
@@ -91,26 +91,26 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "-1294.70 664.05 -16.00"
 						radius = 600
-						output = "CtTargetAreaB1"
+						output = "TTargetAreaB1"
 					},
 					{
 						type = "action_move_to"
-						destination = "CtTargetAreaB1"
+						destination = "TTargetAreaB1"
 						movement_type = "BT_ACTION_MOVETO_RUN"
 						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 					},
 					{
-						type = "action_wait"
-						wait_time_min = 14.0
-						wait_time_max = 18.0
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "THoldB1"
 					}
 				]
 			}
 		},
-		// CT Role 4: Site B Defensive Hold 2
+		// T Role 4: Site B Push 2
 		{
 			type = "decorator_try_lock"
-			domain = "'CtSplitB2'"
+			domain = "'TSplitB2'"
 			child =
 			{
 				type = "sequencer"
@@ -124,26 +124,26 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "-2071.81 424.21 -96.00"
 						radius = 600
-						output = "CtTargetAreaB2"
+						output = "TTargetAreaB2"
 					},
 					{
 						type = "action_move_to"
-						destination = "CtTargetAreaB2"
+						destination = "TTargetAreaB2"
 						movement_type = "BT_ACTION_MOVETO_RUN"
 						route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 					},
 					{
-						type = "action_wait"
-						wait_time_min = 14.0
-						wait_time_max = 18.0
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "THoldB2"
 					}
 				]
 			}
 		},
-		// CT Role 5: Mid / Rotator Hold
+		// T Role 5: Mid / Flank Push (Bot 5)
 		{
 			type = "decorator_try_lock"
-			domain = "'CtSplitMid'"
+			domain = "'TSplitMid'"
 			child =
 			{
 				type = "sequencer"
@@ -157,27 +157,27 @@
 						type = "action_choose_random_waypoint_within_radius"
 						origin = "268.00 -13.74 -135.66"
 						radius = 500
-						output = "CtTargetMidArea"
+						output = "TTargetMidArea"
 					},
 					{
 						type = "action_move_to"
-						destination = "CtTargetMidArea"
+						destination = "TTargetMidArea"
 						movement_type = "BT_ACTION_MOVETO_WALK"
 						route_type = "BT_ACTION_MOVETO_SAFEST_ROUTE"
 					},
 					{
-						type = "action_wait"
-						wait_time_min = 14.0
-						wait_time_max = 18.0
+						type = "subtree"
+						file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+						name = "THoldMid"
 					}
 				]
 			}
 		},
-		// CT Fallback
+		// T Fallback
 		{
 			type = "subtree"
-			file = "scripts/ai/ln/modules/bt_hunt_random_site.kv3"
-			name = "CtFallback"
+			file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+			name = "THuntFallback"
 		}
 	]
 }

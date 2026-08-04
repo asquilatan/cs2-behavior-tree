@@ -281,16 +281,35 @@
 										}
 									}
 								},
-							// Else: CT 2-1-2 defensive setup (with scripted setpos/setang anchors)
+							// Else: CT defensive setup (with automatic Mirage map check)
 							{
 								type = "condition_is_equal"
 								source = "TeamName"
 								destination = "'CT'"
 								child =
 								{
-									type = "subtree"
-									file = "scripts/ai/ln/modules/bt_ct_212.kv3"
-									name = "Ct212"
+									type = "selector"
+									children =
+									[
+										// Mirage-specific scripted setpos/setang defensive positions
+										{
+											type = "condition_is_equal"
+											source = "MapName"
+											destination = "'de_mirage'"
+											child =
+											{
+												type = "subtree"
+												file = "scripts/ai/ln_mirage/modules/bt_ct_212.kv3"
+												name = "CtMirage212"
+											}
+										},
+										// Generic CT 2-1-2 setup for all other maps
+										{
+											type = "subtree"
+											file = "scripts/ai/ln/modules/bt_ct_212.kv3"
+											name = "Ct212"
+										}
+									]
 								}
 							},
 							// Else: T 2-1-2 attack split
