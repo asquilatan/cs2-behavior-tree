@@ -1,18 +1,8 @@
 <!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	// CT 2-1-2 Defensive Split module (Mirage fully scripted setpos/setang).
-	// Assigns CT defensive roles in a 2:1:2 ratio (4:2:4 with a full 10-bot CT):
-	//   - CtSplitA1: Site A Anchor  (bt_a_anchor.kv3 - 70 scripted positions)
-	//   - CtSplitA2: Site A Rotate  (bt_a_rotate.kv3 - 51 scripted positions)
-	//   - CtSplitB1: Site B Anchor  (bt_b_anchor.kv3 - 36 scripted positions)
-	//   - CtSplitB2: Site B Rotate  (bt_b_rotate.kv3 - 22 scripted positions)
-	//   - CtSplitMid: Mid Player    (bt_mid_player.kv3 - 7 scripted positions)
-	//   - CtSplitA3/A4/B3/B4/Mid2: second wave of locks so all 10 CT bots get a
-	//     defensive role instead of falling through to the fallback.
 	type = "selector"
 	children =
 	[
-		// CT Role 1: Site A Anchor (Scripted setpos/setang)
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitA1'"
@@ -23,7 +13,6 @@
 				name = "CtAAnchor"
 			}
 		},
-		// CT Role 2: Site A Rotate (Scripted setpos/setang)
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitA2'"
@@ -34,7 +23,6 @@
 				name = "CtARotate"
 			}
 		},
-		// CT Role 3: Site B Anchor (Scripted setpos/setang)
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitB1'"
@@ -45,7 +33,6 @@
 				name = "CtBAnchor"
 			}
 		},
-		// CT Role 4: Site B Rotate (Scripted setpos/setang)
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitB2'"
@@ -56,7 +43,6 @@
 				name = "CtBRotate"
 			}
 		},
-		// CT Role 5: Mid Player (Scripted setpos/setang)
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitMid'"
@@ -67,7 +53,6 @@
 				name = "CtMidPlayer"
 			}
 		},
-		// CT Role 6: Site A Anchor 2 (extra locks for 10 CTs - 4:2:4 split)
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitA3'"
@@ -78,7 +63,6 @@
 				name = "CtAAnchor2"
 			}
 		},
-		// CT Role 7: Site A Rotate 2
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitA4'"
@@ -89,7 +73,6 @@
 				name = "CtARotate2"
 			}
 		},
-		// CT Role 8: Site B Anchor 2
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitB3'"
@@ -100,7 +83,6 @@
 				name = "CtBAnchor2"
 			}
 		},
-		// CT Role 9: Site B Rotate 2
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitB4'"
@@ -111,7 +93,6 @@
 				name = "CtBRotate2"
 			}
 		},
-		// CT Role 10: Mid Player 2
 		{
 			type = "decorator_try_lock"
 			domain = "'CtSplitMid2'"
@@ -122,7 +103,6 @@
 				name = "CtMidPlayer2"
 			}
 		},
-		// CT Fallback (11+ CTs)
 		{
 			type = "subtree"
 			file = "scripts/ai/ln_mirage/modules/bt_b_rotate.kv3"

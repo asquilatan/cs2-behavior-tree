@@ -43,19 +43,16 @@
 							type = "parallel"
 							children =
 							[
-								// memorize enemies through vision
 								{
 									type = "subtree"
 									file = "scripts/ai/modules/bt_memorize_enemies_vision.kv3"
 									name = "MemorizeEnemiesVision"
 								},
-								// memorize noises happening right now (ln variant - react to nearby gunfire)
 								{
 									type = "subtree"
 									file = "scripts/ai/ln_mirage/modules/bt_memorize_hearing.kv3"
 									name = "MemorizeNoises"
 								},
-								// record the nearest memorized event to investigate
 								{
 									type = "subtree"
 									file = "scripts/ai/modules/bt_memorize_nearest_investigation.kv3"
@@ -71,14 +68,12 @@
 							type = "selector"
 							children =
 							[
-								// Buy if we have to
 								{
 									type = "condition_is_empty"
 									input = "ShouldBuy"
 									negated = 1
 									child =
 									{
-										// sequencer: evaluate first to last child, in order
 										type = "sequencer"
 										children =
 										[
@@ -99,7 +94,6 @@
 										]
 									}
 								},
-								// Else: face the damage source if we're taking damage
 								{
 									type = "decorator_sensor"
 									entity_type_filter = "DAMAGE"
@@ -123,7 +117,6 @@
 										}
 									}
 								},
-								// Else: attack if we see an enemy
 								{
 									type = "subtree"
 									file = "scripts/ai/ln_mirage/modules/bt_attack.kv3"
@@ -134,10 +127,6 @@
 									file = "scripts/ai/modules/bt_heal_if_needed.kv3"
 									name = "HealIfNeeded"
 								},
-								// Else: defuse the bomb if nearby (CT).
-								// Gated on a planted bomb existing so CTs simply carry
-								// on to hunt when there is nothing to defuse. (The
-								// module has no site-search fallback anymore.)
 								{
 									type = "decorator_sensor"
 									shape =
@@ -163,31 +152,26 @@
 										}
 									}
 								},
-								// Else: pickup the bomb if nearby (T)
 								{
 									type = "subtree"
 									file = "scripts/ai/ln_mirage/modules/bt_pickup_bomb_if_nearby.kv3"
 									name = "PickupBombIfNearby"
 								},
-								// Else: plant bomb if we have cover from friendlies (T)
 								{
 									type = "subtree"
 									file = "scripts/ai/ln_mirage/modules/bt_plant_bomb_if_covered.kv3"
 									name = "PlantBombIfCovered"
 								},
-								// Else: plant bomb if we own it (T)
 								{
 									type = "subtree"
 									file = "scripts/ai/ln_mirage/modules/bt_plant_bomb_if_owned.kv3"
 									name = "PlantBombIfOwned"
 								},
-								// Else: investigate the closest memorized event
-{
-								type = "subtree"
-								file = "scripts/ai/ln_mirage/modules/bt_investigate_last_known_event.kv3"
-								name = "InvestigateClosestMemorizedEvent"
-							},
-								// Else: Terrorists defend planted bomb (50% chance to stay at site)
+								{
+									type = "subtree"
+									file = "scripts/ai/ln_mirage/modules/bt_investigate_last_known_event.kv3"
+									name = "InvestigateClosestMemorizedEvent"
+								},
 								{
 									type = "condition_is_equal"
 									source = "TeamName"
@@ -212,7 +196,6 @@
 											negated = 1
 											child =
 											{
-												// 50% chance to stay and defend the bomb
 												type = "decorator_random_int"
 												min = 0
 												max = 1
@@ -227,7 +210,6 @@
 															source = "DefendRoll"
 															destination = 0
 														},
-														// Move near the bomb area
 														{
 															type = "action_move_to"
 															destination = "PlantedBombT"
@@ -235,7 +217,6 @@
 															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 															arrival_epsilon = 1000
 														},
-														// Move to a hiding spot (if available)
 														{
 															type = "selector"
 															children =
@@ -258,18 +239,15 @@
 																		}
 																	]
 																},
-																// Fallback: just stay near the bomb
 																{
 																	type = "decorator_succeed"
 																}
 															]
 														},
-														// Look at the bomb
 														{
 															type = "action_look_at"
 															input_location = "PlantedBombT"
 														},
-														// Wait and watch
 														{
 															type = "action_wait"
 															wait_time_min = 2.0
@@ -281,36 +259,33 @@
 										}
 									}
 								},
-							// Else: CT 2-1-2 defensive setup (with scripted setpos/setang anchors)
-							{
-								type = "condition_is_equal"
-								source = "TeamName"
-								destination = "'CT'"
-								child =
+								{
+									type = "condition_is_equal"
+									source = "TeamName"
+									destination = "'CT'"
+									child =
+									{
+										type = "subtree"
+										file = "scripts/ai/ln_mirage/modules/bt_ct_212.kv3"
+										name = "Ct212"
+									}
+								},
+								{
+									type = "condition_is_equal"
+									source = "TeamName"
+									destination = "'T'"
+									child =
+									{
+										type = "subtree"
+										file = "scripts/ai/ln_mirage/modules/bt_t_212.kv3"
+										name = "T212"
+									}
+								},
 								{
 									type = "subtree"
-									file = "scripts/ai/ln_mirage/modules/bt_ct_212.kv3"
-									name = "Ct212"
+									file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
+									name = "HuntRandomSite"
 								}
-							},
-							// Else: T 2-1-2 attack split
-							{
-								type = "condition_is_equal"
-								source = "TeamName"
-								destination = "'T'"
-								child =
-								{
-									type = "subtree"
-									file = "scripts/ai/ln_mirage/modules/bt_t_212.kv3"
-									name = "T212"
-								}
-							},
-							// Fallback hunt
-							{
-								type = "subtree"
-								file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"
-								name = "HuntRandomSite"
-							}
 							]
 						}
 					}

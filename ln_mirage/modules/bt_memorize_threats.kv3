@@ -3,7 +3,6 @@
 	type = "parallel"
 	children =
 	[
-		// add enemies damaging us to the global list of threats
 		{
 			type = "decorator_sensor"
 			shape =
@@ -25,6 +24,6 @@
 					output = "Threats"
 				}
 			}
-		},
+		}
 	]
 }

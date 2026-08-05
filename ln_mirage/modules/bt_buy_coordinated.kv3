@@ -3,9 +3,6 @@
 	type = "selector"
 	children =
 	[
-		// -----------------------------------------------------
-		// TERRORIST BUY LOGIC
-		// -----------------------------------------------------
 		{
 			type = "condition_is_equal"
 			source = "TeamName"
@@ -15,7 +12,6 @@
 				type = "sequencer"
 				children =
 				[
-					// Step 1: Buy primary weapon
 					{
 						type = "decorator_succeed"
 						child =
@@ -23,7 +19,6 @@
 							type = "selector"
 							children =
 							[
-								// AWP (20% chance if $4750+), otherwise buy AK
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -59,7 +54,6 @@
 										]
 									}
 								},
-								// AK47 ($2700)
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -70,7 +64,6 @@
 										item_aliases = [ "weapon_ak47" ]
 									}
 								},
-								// Galil ($1800)
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -81,7 +74,6 @@
 										item_aliases = [ "weapon_galilar" ]
 									}
 								},
-								// Mac-10 ($1050)
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -95,7 +87,6 @@
 							]
 						}
 					},
-					// Step 2: Buy armor (helmet first, plain kevlar fallback)
 					{
 						type = "decorator_succeed"
 						child =
@@ -114,7 +105,6 @@
 							]
 						}
 					},
-					// Step 3: Buy pistol (60% Deagle, 40% Tec-9)
 					{
 						type = "decorator_succeed"
 						child =
@@ -151,10 +141,6 @@
 				]
 			}
 		},
-
-		// -----------------------------------------------------
-		// COUNTER-TERRORIST BUY LOGIC
-		// -----------------------------------------------------
 		{
 			type = "condition_is_equal"
 			source = "TeamName"
@@ -164,7 +150,6 @@
 				type = "sequencer"
 				children =
 				[
-					// Step 1: Buy primary weapon
 					{
 						type = "decorator_succeed"
 						child =
@@ -172,7 +157,6 @@
 							type = "selector"
 							children =
 							[
-								// AWP (20% chance if $4750+), otherwise buy M4
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -208,7 +192,6 @@
 										]
 									}
 								},
-								// M4 ($2900/$3100)
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -219,7 +202,6 @@
 										item_aliases = [ "weapon_m4a1_silencer", "weapon_m4a1" ]
 									}
 								},
-								// Famas ($2050)
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -230,7 +212,6 @@
 										item_aliases = [ "weapon_famas" ]
 									}
 								},
-								// MP9 ($1250)
 								{
 									type = "condition_is_greater_equal"
 									source = "AccountBalance"
@@ -244,7 +225,6 @@
 							]
 						}
 					},
-					// Step 2: Buy armor (helmet first, plain kevlar fallback)
 					{
 						type = "decorator_succeed"
 						child =
@@ -263,7 +243,6 @@
 							]
 						}
 					},
-					// Step 3: Buy pistol (60% Deagle, 40% Five-SeveN)
 					{
 						type = "decorator_succeed"
 						child =
@@ -297,9 +276,6 @@
 							]
 						}
 					},
-					// Step 4: Buy utility (smoke + molly + flash guaranteed = 3; 50%
-					// chance of a 4th slot: second flash 70% or nade 30%, so the nade
-					// is the rarest pickup). Averages ~3.5 grenades.
 					{
 						type = "decorator_succeed"
 						child =
@@ -307,7 +283,6 @@
 							type = "sequencer"
 							children =
 							[
-								// Smoke (guaranteed)
 								{
 									type = "decorator_succeed"
 									child =
@@ -316,7 +291,6 @@
 										item_aliases = [ "weapon_smokegrenade" ]
 									}
 								},
-								// Molly (guaranteed)
 								{
 									type = "decorator_succeed"
 									child =
@@ -325,7 +299,6 @@
 										item_aliases = [ "weapon_incgrenade", "weapon_molotov" ]
 									}
 								},
-								// Flash (guaranteed)
 								{
 									type = "decorator_succeed"
 									child =
@@ -334,7 +307,6 @@
 										item_aliases = [ "weapon_flashbang" ]
 									}
 								},
-								// 4th slot (50%): second flash (70%) or nade (30%)
 								{
 									type = "decorator_succeed"
 									child =

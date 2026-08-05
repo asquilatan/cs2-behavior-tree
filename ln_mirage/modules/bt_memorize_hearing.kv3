@@ -1,9 +1,5 @@
 <!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	// memorize noises happening right now (ln variant)
-	// No weight-as-distance / random-by-distance roulette: anything within the
-	// hearing sphere is an event. Also feeds ShortTermInvestigateMemory so bots
-	// actually turn toward nearby gunfire instead of only reacting when hit.
 	type = "decorator_sensor"
 	shape =
 	{

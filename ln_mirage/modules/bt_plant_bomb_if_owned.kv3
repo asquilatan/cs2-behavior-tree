@@ -24,7 +24,6 @@
 							type = "selector"
 							children =
 							[
-
 								{
 									type = "sequencer"
 									children =
@@ -81,7 +80,6 @@
 							wait_time_min = 1
 							wait_time_max = 1
 						},
-						// Plant the bomb immediately
 						{
 							type = "decorator_repeat"
 							child =

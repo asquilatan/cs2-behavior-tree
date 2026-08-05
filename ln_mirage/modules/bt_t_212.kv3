@@ -1,14 +1,8 @@
 <!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	// Terrorist 2-1-2 Attack Split module.
-	// Assigns 5 T roles:
-	//   - 2 Ts push Site A
-	//   - 2 Ts push Site B
-	//   - 1 T pushes Mid / Flank
 	type = "selector"
 	children =
 	[
-		// T Role 1: Site A Push 1
 		{
 			type = "decorator_try_lock"
 			domain = "'TSplitA1'"
@@ -41,7 +35,6 @@
 				]
 			}
 		},
-		// T Role 2: Site A Push 2
 		{
 			type = "decorator_try_lock"
 			domain = "'TSplitA2'"
@@ -74,7 +67,6 @@
 				]
 			}
 		},
-		// T Role 3: Site B Push 1
 		{
 			type = "decorator_try_lock"
 			domain = "'TSplitB1'"
@@ -107,7 +99,6 @@
 				]
 			}
 		},
-		// T Role 4: Site B Push 2
 		{
 			type = "decorator_try_lock"
 			domain = "'TSplitB2'"
@@ -140,7 +131,6 @@
 				]
 			}
 		},
-		// T Role 5: Mid / Flank Push (Bot 5)
 		{
 			type = "decorator_try_lock"
 			domain = "'TSplitMid'"
@@ -173,7 +163,6 @@
 				]
 			}
 		},
-		// T Fallback
 		{
 			type = "subtree"
 			file = "scripts/ai/ln_mirage/modules/bt_hunt_random_site.kv3"

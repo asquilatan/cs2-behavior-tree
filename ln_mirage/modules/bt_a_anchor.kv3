@@ -1,10 +1,8 @@
 <!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	// A Anchor Defense Module (Role A1)
 	type = "selector"
 	children =
 	[
-		// Instant hold when noise/event heard within hearing radius
 		{
 			type = "condition_is_empty"
 			input = "ShortTermInvestigateMemory"
@@ -26,7 +24,6 @@
 				]
 			}
 		},
-		// Main position selector (non-interrupting move + hold)
 		{
 			type = "decorator_repeat"
 			child =
@@ -38,98 +35,69 @@
 						type = "action_equip_weapon"
 						weapon = "BEST"
 					},
-					// Early utility throw (~6-10s into the round, before holding angle)
 					{
 						type = "decorator_succeed"
 						child =
 						{
-							type = "selector"
+							type = "sequencer"
 							children =
 							[
 								{
-									type = "sequencer"
+									type = "decorator_random_int"
+									min = 0
+									max = 0
+									output = "EarlyThrowChoice"
+								},
+								{
+									type = "selector"
 									children =
 									[
 										{
-											type = "selector"
-											children =
-											[
-												{
-													type = "condition_owns_item"
-													item = "weapon_incgrenade"
-												},
-												{
-													type = "condition_owns_item"
-													item = "weapon_molotov"
-												}
-											]
-										},
-										{
-											type = "sequencer"
-											children =
-											[
-												{
-													type = "selector"
-													children =
-													[
-														{
-															type = "sequencer"
-															children =
-															[
-																{
-																	type = "condition_owns_item"
-																	item = "weapon_incgrenade"
-																},
-																{
-																	type = "action_equip_item"
-																	item = "weapon_incgrenade"
-																}
-															]
-														},
-														{
-															type = "sequencer"
-															children =
-															[
-																{
-																	type = "condition_owns_item"
-																	item = "weapon_molotov"
-																},
-																{
-																	type = "action_equip_item"
-																	item = "weapon_molotov"
-																}
-															]
-														}
-													]
-												},
-												{
-													type = "action_move_to"
-													destination = "-415.286743 -1940.827881 -115.775635"
-													movement_type = "BT_ACTION_MOVETO_RUN"
-													route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-												},
-												{
-													type = "action_look_at"
-													input_angles = "-3.608005 31.688143 0.000000"
-												},
-												{
-													type = "action_wait"
-													wait_time_min = 0.3
-													wait_time_max = 0.3
-												},
-												{
-													type = "action_pull_trigger"
-												},
-												{
-													type = "action_wait"
-													wait_time_min = 0.4
-													wait_time_max = 0.4
-												},
-												{
-													type = "action_equip_weapon"
-													weapon = "BEST"
-												}
-											]
+											type = "condition_is_equal"
+											source = 0
+											destination = "EarlyThrowChoice"
+											child =
+											{
+												type = "sequencer"
+												children =
+												[
+													{
+														type = "condition_owns_item"
+														item = "weapon_molotov"
+													},
+													{
+														type = "action_equip_item"
+														item = "weapon_molotov"
+													},
+													{
+														type = "action_move_to"
+														destination = "-415.286743 -1940.827881 -115.775635"
+														movement_type = "BT_ACTION_MOVETO_RUN"
+														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+													},
+													{
+														type = "action_look_at"
+														input_angles = "-3.608005 31.688143 0.000000"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.3
+														wait_time_max = 0.3
+													},
+													{
+														type = "action_pull_trigger"
+													},
+													{
+														type = "action_wait"
+														wait_time_min = 0.4
+														wait_time_max = 0.4
+													},
+													{
+														type = "action_equip_weapon"
+														weapon = "BEST"
+													}
+												]
+											}
 										}
 									]
 								}
@@ -2038,7 +2006,6 @@
 							}
 						]
 					},
-					// Post-hold utility throw (75% chance after holding angle)
 					{
 						type = "decorator_succeed"
 						child =
@@ -2047,25 +2014,32 @@
 							chance = 0.75
 							child =
 							{
-								type = "selector"
+								type = "sequencer"
 								children =
 								[
 									{
-										type = "sequencer"
+										type = "decorator_random_int"
+										min = 0
+										max = 3
+										output = "ThrowChoice"
+									},
+									{
+										type = "selector"
 										children =
 										[
 											{
-												type = "condition_owns_item"
-												item = "weapon_smokegrenade"
-											},
-											{
-												type = "decorator_maybe"
-												chance = 0.5
+												type = "condition_is_equal"
+												source = 0
+												destination = "ThrowChoice"
 												child =
 												{
 													type = "sequencer"
 													children =
 													[
+														{
+															type = "condition_owns_item"
+															item = "weapon_smokegrenade"
+														},
 														{
 															type = "action_equip_item"
 															item = "weapon_smokegrenade"
@@ -2099,25 +2073,20 @@
 														}
 													]
 												}
-											}
-										]
-									},
-									{
-										type = "sequencer"
-										children =
-										[
-											{
-												type = "condition_owns_item"
-												item = "weapon_smokegrenade"
 											},
 											{
-												type = "decorator_maybe"
-												chance = 0.5
+												type = "condition_is_equal"
+												source = 1
+												destination = "ThrowChoice"
 												child =
 												{
 													type = "sequencer"
 													children =
 													[
+														{
+															type = "condition_owns_item"
+															item = "weapon_smokegrenade"
+														},
 														{
 															type = "action_equip_item"
 															item = "weapon_smokegrenade"
@@ -2151,100 +2120,100 @@
 														}
 													]
 												}
-											}
-										]
-									},
-									{
-										type = "sequencer"
-										children =
-										[
-											{
-												type = "condition_owns_item"
-												item = "weapon_smokegrenade"
 											},
 											{
-												type = "sequencer"
-												children =
-												[
-													{
-														type = "action_equip_item"
-														item = "weapon_smokegrenade"
-													},
-													{
-														type = "action_move_to"
-														destination = "-783.937317 -2210.353516 -116.000000"
-														movement_type = "BT_ACTION_MOVETO_RUN"
-														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-													},
-													{
-														type = "action_look_at"
-														input_angles = "-10.383839 83.176804 0.000000"
-													},
-													{
-														type = "action_wait"
-														wait_time_min = 0.3
-														wait_time_max = 0.3
-													},
-													{
-														type = "action_pull_trigger"
-													},
-													{
-														type = "action_wait"
-														wait_time_min = 0.4
-														wait_time_max = 0.4
-													},
-													{
-														type = "action_equip_weapon"
-														weapon = "BEST"
-													}
-												]
-											}
-										]
-									},
-									{
-										type = "sequencer"
-										children =
-										[
-											{
-												type = "condition_owns_item"
-												item = "weapon_flashbang"
+												type = "condition_is_equal"
+												source = 2
+												destination = "ThrowChoice"
+												child =
+												{
+													type = "sequencer"
+													children =
+													[
+														{
+															type = "condition_owns_item"
+															item = "weapon_smokegrenade"
+														},
+														{
+															type = "action_equip_item"
+															item = "weapon_smokegrenade"
+														},
+														{
+															type = "action_move_to"
+															destination = "-783.937317 -2210.353516 -116.000000"
+															movement_type = "BT_ACTION_MOVETO_RUN"
+															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+														},
+														{
+															type = "action_look_at"
+															input_angles = "-10.383839 83.176804 0.000000"
+														},
+														{
+															type = "action_wait"
+															wait_time_min = 0.3
+															wait_time_max = 0.3
+														},
+														{
+															type = "action_pull_trigger"
+														},
+														{
+															type = "action_wait"
+															wait_time_min = 0.4
+															wait_time_max = 0.4
+														},
+														{
+															type = "action_equip_weapon"
+															weapon = "BEST"
+														}
+													]
+												}
 											},
 											{
-												type = "sequencer"
-												children =
-												[
-													{
-														type = "action_equip_item"
-														item = "weapon_flashbang"
-													},
-													{
-														type = "action_move_to"
-														destination = "-916.259705 -1527.920776 -104.000000"
-														movement_type = "BT_ACTION_MOVETO_RUN"
-														route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
-													},
-													{
-														type = "action_look_at"
-														input_angles = "-37.135948 37.891922 0.000000"
-													},
-													{
-														type = "action_wait"
-														wait_time_min = 0.3
-														wait_time_max = 0.3
-													},
-													{
-														type = "action_pull_trigger"
-													},
-													{
-														type = "action_wait"
-														wait_time_min = 0.4
-														wait_time_max = 0.4
-													},
-													{
-														type = "action_equip_weapon"
-														weapon = "BEST"
-													}
-												]
+												type = "condition_is_equal"
+												source = 3
+												destination = "ThrowChoice"
+												child =
+												{
+													type = "sequencer"
+													children =
+													[
+														{
+															type = "condition_owns_item"
+															item = "weapon_flashbang"
+														},
+														{
+															type = "action_equip_item"
+															item = "weapon_flashbang"
+														},
+														{
+															type = "action_move_to"
+															destination = "-916.259705 -1527.920776 -104.000000"
+															movement_type = "BT_ACTION_MOVETO_RUN"
+															route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+														},
+														{
+															type = "action_look_at"
+															input_angles = "-37.135948 37.891922 0.000000"
+														},
+														{
+															type = "action_wait"
+															wait_time_min = 0.3
+															wait_time_max = 0.3
+														},
+														{
+															type = "action_pull_trigger"
+														},
+														{
+															type = "action_wait"
+															wait_time_min = 0.4
+															wait_time_max = 0.4
+														},
+														{
+															type = "action_equip_weapon"
+															weapon = "BEST"
+														}
+													]
+												}
 											}
 										]
 									}

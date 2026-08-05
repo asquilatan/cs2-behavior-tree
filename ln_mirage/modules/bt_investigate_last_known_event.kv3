@@ -17,10 +17,6 @@
 					type = "action_equip_weapon"
 					weapon = "BEST"
 				},
-				// Look at the memorized event even when it is not visible right
-				// now (last seen spot / gunshot noise / flash). The tree re-runs
-				// this block every tick while the move below is "running", so the
-				// bot keeps facing the event as it advances.
 				{
 					type = "action_look_at"
 					input_location = "Event"

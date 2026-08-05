@@ -1,13 +1,8 @@
 <!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	// Unified 2-1-2 split module for all bots (team-independent).
-	// B-side roles (SplitB1, SplitB2) use direct scripted setpos/setang anchors.
-	// A-side and Mid roles move directly to spread-out site waypoints without
-	// calling action_choose_bomb_site_area to avoid clumping at the site center.
 	type = "selector"
 	children =
 	[
-		// Role 1: Site A Anchor 1 (Bot 1)
 		{
 			type = "decorator_try_lock"
 			domain = "'SplitA1'"
@@ -40,7 +35,6 @@
 				]
 			}
 		},
-		// Role 2: Site A Anchor 2 (Bot 2)
 		{
 			type = "decorator_try_lock"
 			domain = "'SplitA2'"
@@ -73,7 +67,6 @@
 				]
 			}
 		},
-		// Role 3: Site B Anchor (Bot 3)
 		{
 			type = "decorator_try_lock"
 			domain = "'SplitB1'"
@@ -84,7 +77,6 @@
 				name = "BAnchor"
 			}
 		},
-		// Role 4: Site B Rotate (Bot 4)
 		{
 			type = "decorator_try_lock"
 			domain = "'SplitB2'"
@@ -95,7 +87,6 @@
 				name = "BRotate"
 			}
 		},
-		// Role 5: Mid / Alt route (Bot 5)
 		{
 			type = "decorator_try_lock"
 			domain = "'SplitMid'"
@@ -128,7 +119,6 @@
 				]
 			}
 		},
-		// Fallback for extra bots
 		{
 			type = "subtree"
 			file = "scripts/ai/ln_mirage/modules/bt_b_rotate.kv3"

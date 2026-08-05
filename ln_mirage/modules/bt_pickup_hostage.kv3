@@ -11,7 +11,7 @@
 	output = "Hostage"
 	class_name = "hostage_entity"
 	priority = 1
-	child = 
+	child =
 	{
 		type = "condition_is_empty"
 		input = "Hostage"

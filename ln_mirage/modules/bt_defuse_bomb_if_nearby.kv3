@@ -8,7 +8,6 @@
 		type = "sequencer"
 		children =
 		[
-			// Step 1: Find the planted bomb (Global Sensor - sees through walls)
 			{
 				type = "decorator_sensor"
 				shape =
@@ -38,9 +37,6 @@
 					}
 				}
 			},
-			// Step 2: EVERY CT runs to the bomb (NO lock here). The whole team
-			// rotates as a hoard, so no bot is ever stuck "waiting for the lock"
-			// back at its old site while only one teammate goes to defuse.
 			{
 				type = "action_move_to"
 				destination = "PlantedBomb"
@@ -48,10 +44,6 @@
 				route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
 				arrival_epsilon = 200
 			},
-			// Step 3: Only the first CT to arrive locks the defuse. Everyone who
-			// arrives afterwards (or is still running while one is defusing) will
-			// continue the run, then fail the lock and fall back to the hunt
-			// branch in bt_default.
 			{
 				type = "decorator_try_lock"
 				domain = "'DefuseBombIfNearby'"
@@ -60,12 +52,10 @@
 					type = "sequencer"
 					children =
 					[
-						// Close the last bit: walk when at bomb site, else run
 						{
 							type = "selector"
 							children =
 							[
-								// If at bomb site, walk to bomb (sneak approach)
 								{
 									type = "condition_is_at_bomb_site"
 									child =
@@ -77,7 +67,6 @@
 										arrival_epsilon = 35
 									}
 								},
-								// Otherwise run to the bomb
 								{
 									type = "action_move_to"
 									destination = "PlantedBomb"
@@ -87,12 +76,10 @@
 								}
 							]
 						},
-						// Look at the bomb
 						{
 							type = "action_look_at"
 							input_location = "PlantedBomb"
 						},
-						// Defuse - commit to it
 						{
 							type = "decorator_repeat"
 							child =

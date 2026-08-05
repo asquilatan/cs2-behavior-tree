@@ -94,13 +94,10 @@
 									ready = "AimReady"
 								}
 							},
-							// Attack logic - with sniper rifle scoping support
-							// Attack logic - with sniper rifle scoping support
 							{
 								type = "selector"
 								children =
 								[
-									// AWP scoping attack
 									{
 										type = "condition_is_weapon_equipped"
 										weapon = "weapon_awp"
@@ -111,7 +108,6 @@
 											name = "AttackSniper"
 										}
 									},
-									// SSG 08 (Scout) scoping attack
 									{
 										type = "condition_is_weapon_equipped"
 										weapon = "weapon_ssg08"
@@ -128,29 +124,19 @@
 												{
 													type = "action_secondary_attack"
 												},
-												// Attack loop
 												{
 													type = "decorator_repeat"
 													child =
 													{
-														type = "sequencer"
-														children =
-														[
-
-
-															{
-																type = "action_attack"
-																input = "Enemy"
-																output = "Attacking"
-																ready = "AimReady"
-															}
-														]
+														type = "action_attack"
+														input = "Enemy"
+														output = "Attacking"
+														ready = "AimReady"
 													}
 												}
 											]
 										}
 									},
-									// SCAR-20 scoping attack
 									{
 										type = "condition_is_weapon_equipped"
 										weapon = "weapon_scar20"
@@ -167,29 +153,19 @@
 												{
 													type = "action_secondary_attack"
 												},
-												// Attack loop
 												{
 													type = "decorator_repeat"
 													child =
 													{
-														type = "sequencer"
-														children =
-														[
-
-
-															{
-																type = "action_attack"
-																input = "Enemy"
-																output = "Attacking"
-																ready = "AimReady"
-															}
-														]
+														type = "action_attack"
+														input = "Enemy"
+														output = "Attacking"
+														ready = "AimReady"
 													}
 												}
 											]
 										}
 									},
-									// G3SG1 scoping attack
 									{
 										type = "condition_is_weapon_equipped"
 										weapon = "weapon_g3sg1"
@@ -206,48 +182,31 @@
 												{
 													type = "action_secondary_attack"
 												},
-												// Attack loop
 												{
 													type = "decorator_repeat"
 													child =
 													{
-														type = "sequencer"
-														children =
-														[
-
-
-															{
-																type = "action_attack"
-																input = "Enemy"
-																output = "Attacking"
-																ready = "AimReady"
-															}
-														]
+														type = "action_attack"
+														input = "Enemy"
+														output = "Attacking"
+														ready = "AimReady"
 													}
 												}
 											]
 										}
 									},
-									// Default attack for non-sniper weapons
 									{
 										type = "decorator_repeat"
 										child =
 										{
-											type = "sequencer"
-											children =
-											[
-												{
-													type = "action_attack"
-													input = "Enemy"
-													output = "Attacking"
-													ready = "AimReady"
-												}
-											]
+											type = "action_attack"
+											input = "Enemy"
+											output = "Attacking"
+											ready = "AimReady"
 										}
 									}
 								]
 							}
-
 						]
 					}
 				}
