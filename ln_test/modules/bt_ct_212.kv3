@@ -1,0 +1,112 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	type = "selector"
+	children =
+	[
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitA1'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_a_anchor.kv3"
+				name = "CtAAnchor"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitA2'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_a_rotate.kv3"
+				name = "CtARotate"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitB1'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_b_anchor.kv3"
+				name = "CtBAnchor"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitB2'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_b_rotate.kv3"
+				name = "CtBRotate"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitMid'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_mid_player.kv3"
+				name = "CtMidPlayer"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitA3'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_a_anchor.kv3"
+				name = "CtAAnchor2"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitA4'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_a_rotate.kv3"
+				name = "CtARotate2"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitB3'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_b_anchor.kv3"
+				name = "CtBAnchor2"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitB4'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_b_rotate.kv3"
+				name = "CtBRotate2"
+			}
+		},
+		{
+			type = "decorator_try_lock"
+			domain = "'CtSplitMid2'"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_mid_player.kv3"
+				name = "CtMidPlayer2"
+			}
+		},
+		{
+			type = "subtree"
+			file = "scripts/ai/ln_test/modules/bt_b_rotate.kv3"
+			name = "CtFallback"
+		}
+	]
+}

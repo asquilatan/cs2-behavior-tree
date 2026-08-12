@@ -1,0 +1,120 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	type = "selector"
+	children =
+	[
+		{
+			type = "condition_is_weapon_equipped"
+			weapon = "weapon_awp"
+			child =
+			{
+				type = "subtree"
+				file = "scripts/ai/ln_test/modules/bt_attack_sniper.kv3"
+				name = "AttackSniper"
+			}
+		},
+		{
+			type = "selector"
+			children =
+			[
+				{
+					type = "condition_is_weapon_equipped"
+					weapon = "weapon_ssg08"
+					child =
+					{
+						type = "sequencer"
+						children =
+						[
+							{
+								type = "action_aim"
+								input = "Enemy"
+								ready = "AimReady"
+							},
+							{
+								type = "action_secondary_attack"
+							},
+							{
+								type = "decorator_repeat"
+								child =
+								{
+									type = "action_attack"
+									input = "Enemy"
+									output = "Attacking"
+									ready = "AimReady"
+								}
+							}
+						]
+					}
+				},
+				{
+					type = "condition_is_weapon_equipped"
+					weapon = "weapon_scar20"
+					child =
+					{
+						type = "sequencer"
+						children =
+						[
+							{
+								type = "action_aim"
+								input = "Enemy"
+								ready = "AimReady"
+							},
+							{
+								type = "action_secondary_attack"
+							},
+							{
+								type = "decorator_repeat"
+								child =
+								{
+									type = "action_attack"
+									input = "Enemy"
+									output = "Attacking"
+									ready = "AimReady"
+								}
+							}
+						]
+					}
+				},
+				{
+					type = "condition_is_weapon_equipped"
+					weapon = "weapon_g3sg1"
+					child =
+					{
+						type = "sequencer"
+						children =
+						[
+							{
+								type = "action_aim"
+								input = "Enemy"
+								ready = "AimReady"
+							},
+							{
+								type = "action_secondary_attack"
+							},
+							{
+								type = "decorator_repeat"
+								child =
+								{
+									type = "action_attack"
+									input = "Enemy"
+									output = "Attacking"
+									ready = "AimReady"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			type = "decorator_repeat"
+			child =
+			{
+				type = "action_attack"
+				input = "Enemy"
+				output = "Attacking"
+				ready = "AimReady"
+			}
+		}
+	]
+}

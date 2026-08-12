@@ -1,0 +1,49 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	type = "sequencer"
+	children =
+	[
+		{
+			type = "action_aim"
+			input = "Enemy"
+		},
+		{
+			type = "action_secondary_attack"
+		},
+		{
+			type = "action_wait"
+			wait_time_min = 0.1
+			wait_time_max = 0.1
+		},
+		{
+			type = "parallel"
+			children =
+			[
+				{
+					type = "decorator_repeat"
+					child =
+					{
+						type = "sequencer"
+						children =
+						[
+							{
+								type = "action_pull_trigger"
+								ratio = 1.0
+							},
+							{
+								type = "action_attack"
+								input = "Enemy"
+								output = "Attacking"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			type = "action_combat_positioning"
+			input = "Enemy"
+			is_attacking = "Attacking"
+		}
+	]
+}
